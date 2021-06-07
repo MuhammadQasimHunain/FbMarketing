@@ -11,7 +11,7 @@ namespace FacebookStats.Models
         {
             get
             {
-                return @"EAADfq6jGkYoBAAZC7KSnPdSWnMZBWZB4qbEFTEGkP6ZAab8rzVDgGWGbiz5ZAIHM7tyLmuPZCUvxJt36UOGnLxaBqpUi6oQX1ZC8C1cUunAqAwa7LEb8dVW6JcL0JDe1cWC92ce5qIxUorqpaDllNRbnZAsPvkdwWtNjzamo8hFkDB8ywV3yauuSWKNLY1KghrUZD";
+                return @"EAADfq6jGkYoBAAa6uP330wLGPLyUqZCJZA34QhO0XoKwZAGHhkJVjaAVOZAgTsZBKAX4eLlmUoKp0wRPJjXBLKg0ynDjvkKSaXaEI61crZBQ6Spk8KBHhZAiJttk9YveZAlvyoF852urg9dtOht0MErjuJzofZCkj1EGZABeBPHo7FvZAV9I2XPsEjbt91kX0xXBEIZD";
             }
         }
         public static string AppId

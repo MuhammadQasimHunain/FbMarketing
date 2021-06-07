@@ -5,4 +5,12 @@
 }
 
 <h2>Preview</h2>
-@Html.Raw(ViewBag.Preview)
+@if (ViewBag.Preview == null)
+{
+    <h2>Error in Access token.</h2>
+}
+else
+{
+    @Html.Raw(ViewBag.Preview)
+
+}
