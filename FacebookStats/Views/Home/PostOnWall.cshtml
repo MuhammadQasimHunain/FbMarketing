@@ -1,0 +1,177 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<hr />
+<h2 class="">Post Ad on wall</h2>
+<div class="form-group" id="formDisplay">
+    <div class="form-group">
+        <label for="adName">Ad Name</label>
+        <input type="text" class="form-control" id="adName" placeholder="Enter Ad Name">
+    </div>
+    <div class="form-group">
+        <label for="headerMessage">Header Message</label>
+        <input type="text" class="form-control" id="headerMessage" placeholder="Enter Header Message">
+    </div>
+    <div class="form-group">
+        <label for="webSiteDisplayURL">WebSite Display URL</label>
+        <input type="text" class="form-control" id="webSiteDisplayURL" placeholder="WebSite Display URL">
+    </div>
+    <div class="form-group">
+        <label for="webSiteURL">WebSite URL</label>
+        <input type="text" class="form-control" id="webSiteURL" placeholder="WebSite URL">
+    </div>
+    <div class="form-group">
+        <label for="maxBudget">Max Budget</label>
+        <input type="text" class="form-control" id="maxBudget" placeholder="Enter max budget">
+    </div>
+    <div class="form-group">
+        <label for="locations">Locations</label>
+        <input type="text" class="form-control" id="locations" placeholder="Enter locations">
+    </div>
+    <div class="form-group">
+        <label for="maxBudget">Page Id</label>
+        <input type="text" class="form-control" id="pageId" placeholder="Enter page id">
+    </div>
+    <div class="form-group">
+        <label for="maxBudget">Time Span</label>
+        <input type="date" class="form-control" id="dateStart" placeholder="Enter start date">
+        <input type="date" class="form-control" id="dateEnd" placeholder="Enter end date">
+    </div>
+    <div class="form-group">
+        <label for="fbImage">Upload Image on FB</label>
+        <input type="file" class="form-control" id="fbImage" placeholder="File">
+        <input type="text" hidden="hidden" id="txtImg" />
+        <input type="text" hidden="hidden" id="txtImgDisplay" />
+    </div>
+    <button class="btn btn-primary" id="submitButton">Submit</button>
+</div>
+<div class="form-group" id="result">
+    <div class="form-group">
+        <label for="CampaignID">Campaign ID</label>
+        <input class="form-control" type="text" id="CampaignID" disabled="disabled" />
+    </div>
+    <div class="form-group">
+        <label for="CreativeID">Creative ID</label>
+        <input class="form-control" type="text" id="CreativeID" disabled="disabled" />
+    </div>
+    <div class="form-group">
+        <label for="AdsetID">Adset ID</label>
+        <input class="form-control" type="text" id="AdsetID" disabled="disabled" />
+    </div>
+    <div class="form-group">
+        <label for="AdID">Ad ID</label>
+        <input class="form-control" type="text" id="AdID" disabled="disabled" />
+    </div>
+    <div class="form-group">
+        <label for="AdAccountID">Ad Account ID</label>
+        <input class="form-control" type="text" id="AdAccountID" disabled="disabled" />
+    </div>
+    <div class="form-group">
+        <label for="Message">Message</label>
+        <input class="form-control"  type="text" id="Message" disabled="disabled" />
+    </div>
+</div>
+<div id="cantCreate">
+    <div class="form-group">
+        <label for="Message">Message</label>
+        <input class="form-control" type="text" id="Message" disabled="disabled" value="Cant create Ad. Please check parameters." />
+    </div>
+</div>
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#result').hide();
+            $('#cantCreate').hide();
+            
+            $('#submitButton').click(function () {
+                var data = {
+                    adName: $('#adName').val(),
+                    headerMessage: $('#headerMessage').val(),
+                    webSiteDisplayURL: $('#webSiteDisplayURL').val(),
+                    webSiteURL: $('#webSiteURL').val(),
+                    facebookLogin: $('#facebookLogin').val(),
+                    maxBudget: $('#maxBudget').val(),
+                    locations: $('#locations').val(), 
+                    pageId: $('#pageId').val(),
+                    dateStart: $('#dateStart').val(),
+                    dateEnd: $('#dateEnd').val(),
+                    imageFiles: $('#txtImgDisplay').val(),
+                    imageHash: $('#txtImg').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("PostOnWall","Home")',
+                    data: data,
+                    success: function (data)
+                    {
+                        if (data.isValid == false) {
+                            $('#formDisplay').hide();
+                            $('#cantCreate').show();
+                        }
+                        else {
+                            var response = data.result;
+                            $('#formDisplay').hide();
+                            $('#result').show();
+                            $('#CampaignID').val(response.CampaignID);
+                            $('#CreativeID').val(response.CreativeID[0]);
+                            $('#AdsetID').val(response.AdsetID);
+                            $('#AdID').val(response.AdID);
+                            $('#AdAccountID').val(response.AdAccountID);
+                            $('#Message').val(response.Message);
+                        }
+                    },
+                });
+            });
+
+            $("#fbImage").change(function () {
+                var data = new FormData();
+                var files = $("#fbImage").get(0).files;
+                if (files.length > 0) {
+                    data.append("MyImages", files[0]);
+                }
+
+                $.ajax({
+                    url: "@Url.Action("UploadFile", "Home")",
+                    type: "POST",
+                    processData: false,
+                    contentType: false,
+                    data: data,
+                    success: function (response) {
+                        //code after success
+                        var images = $("#txtImgDisplay").val();
+                        $("#txtImgDisplay").val(images + ";" + response.imagePath);
+                    },
+                    error: function (er) {
+                        alert(er);
+                    }
+
+                });
+
+                var data = new FormData();
+                jQuery.each(jQuery('#fbImage')[0].files, function (i, file) {
+                    data.append('file-' + i, file);
+                });
+                $.ajax({
+                    url: 'https://graph.facebook.com/v10.0/act_997931414279422/adimages?access_token=EAADfq6jGkYoBAHvujz0pbUaZBLgO8LvLYrLmeFqAifV8decc47YzG7n7SJYIpEvnZAMkZBVzqxRZB4T77w2dCPThBBgoqvRH7zVa0XbqwxNy6ZC5K9ZAcHDJFdx7fmrMpIp2npANgJUHZC5nTcFoM59KjbXhjkpUaRgaJO4UlRKhTn5dXxFLlwN5YuBz26i0X0ZD',
+                    data: data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    type: 'POST',
+                    success: function (data) {
+                        var images = $("#txtImg").val();
+                        $("#txtImg").val(images + ";" + data.images[$('#fbImage')[0].files[0].name].hash);
+                    }
+                });
+            });
+            
+
+        });
+    </script>
+
+}

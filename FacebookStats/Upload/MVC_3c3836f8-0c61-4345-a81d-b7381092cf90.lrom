@@ -1,0 +1,3459 @@
+<process startStep="a77c7639-209d-4f8e-966a-a17e4102fb1f" id="61d85787-ddcd-43b0-a5ea-17eb2c1d1b36">
+  <name>Edit Distribution Manual Entry1</name>
+  <usage>ResultSetBound</usage>
+  <cma>Current</cma>
+  <displayName>Edit Distribution Manual Entry</displayName>
+  <desc>Edit Distribution Manual Entry</desc>
+  <processIcon>ProcessEdit</processIcon>
+  <storePath>33b88d01-ada6-41e9-8d6c-f7d96b90ebdd</storePath>
+  <request>1224fb59-f998-465c-b51b-c82edc9665ba</request>
+  <stepCounter>335</stepCounter>
+  <promptYear>False</promptYear>
+  <module>
+  </module>
+  <taskDuplicateCheck>False</taskDuplicateCheck>
+  <autosize>False</autosize>
+  <whatIf>False</whatIf>
+  <steps>
+    <step nextStep="" id="e968186a-15ef-4edf-8b88-11b54efb3a76" name="step0" type="ResultSet">
+      <title>Result Set</title>
+      <description>Result Set</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived />
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>True</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="878" centerY="-242" entityType="ResultSet" />
+    </step>
+    <step nextStep="1adb4ae5-7093-4b06-b608-49adce971b68" id="a77c7639-209d-4f8e-966a-a17e4102fb1f" name="step7" type="IterateChild">
+      <title>Checking the Link between Distribution and Distribution Manual Entry</title>
+      <description>Checking the Link between Distribution and Distribution Manual Entry</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[RTE.DistributionStatus=ChildObj.Status;
+RTE.PropertyType=RTE.PropertyType+1;
+
+]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionDistributionManualEntry</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="a6fcc78f-9900-4c8f-848b-cb233eac787c" dependencyName="Select" dependencyType="Select" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="308" sourceY="-110" targetX="860" targetY="-242" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="308" centerY="-84" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="1adb4ae5-7093-4b06-b608-49adce971b68" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="1adb4ae5-7093-4b06-b608-49adce971b68" name="step8" type="DecisionPoint">
+      <title>Checking the link between distribution and  distribution manual entry and status of distribution</title>
+      <description>Checking the link between distribution and  distribution manual entry and status of distribution</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="a7e3a8f5-3018-400d-99dd-8254da82f433" id="38466f0d-0734-4718-bd24-219993d62096" text="No Link" defaultSelection="True" stepNumber="a7e3a8f5-3018-400d-99dd-8254da82f433" index="0" />
+          <decisionItem nextStep="6a0a031b-d383-4ee2-b212-f24e620cbce0" id="d4253044-8221-4452-8084-49396526925c" text="Checking the link between distribution and  distribution manual entry and status of distribution" defaultSelection="False" stepNumber="6a0a031b-d383-4ee2-b212-f24e620cbce0" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.PropertyType > 0 and  RTE.DistributionStatus=="PO")
+{
+	return "step19";
+}
+else
+{
+	return "step216";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="383" centerY="6" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Left" targetRef="a7e3a8f5-3018-400d-99dd-8254da82f433" targetPort="Top" decision="Unknown" text="No Link" tag="" isDefault="True" decisionRef="38466f0d-0734-4718-bd24-219993d62096" />
+        <SequenceFlow sourcePort="Right" targetRef="6a0a031b-d383-4ee2-b212-f24e620cbce0" targetPort="Left" decision="Unknown" text="Checking the link between distribution and  distribution manual entry and status of distribution" tag="" isDefault="False" decisionRef="d4253044-8221-4452-8084-49396526925c" />
+      </diagramEntity>
+    </step>
+    <step nextStep="6b216bdd-2b29-4720-9233-0c9eed2b3147" id="03a7fe78-3c92-4562-8b42-448cb67bf995" name="step312" type="IterateGrandChild">
+      <title>Iterate GrandChild</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block, For each of the Child Object it will iterate the grandchildren</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[if(IsEmpty(ChildObj.Amount))
+ChildObj.Amount =0.0;
+
+if(ChildObj.Amount > 0.0)
+{
+	RTE.DDCount = RTE.DDCount+ 1;
+}]]></loopBlock>
+        <summaryBlock><![CDATA[GrandChildObj.DistributionID = "";
+GrandChildObj.DistributionDetailID = "";]]></summaryBlock>
+        <relationName>DistributionManualEntryDistributionDetails</relationName>
+        <childRelationName>DistributionDetailsSubsidiaryLedger</childRelationName>
+      </derived>
+      <preStep><![CDATA[RTE.DDCount = 0;]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="d72589ed-f688-4b4c-85ef-3954730cc51a" dependencyName="Select" dependencyType="Select" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="102" sourceY="256" targetX="860" targetY="-242" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="32" centerY="256" entityType="IterateGrandChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="6b216bdd-2b29-4720-9233-0c9eed2b3147" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="b3a42376-7785-44d7-89c6-0c6dee042920" id="6a0a031b-d383-4ee2-b212-f24e620cbce0" name="step19" type="Notification">
+      <title>Notification</title>
+      <description>Notification</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <type>Error</type>
+        <message><![CDATA[The selected Distribution Manual Entry cannot be edited.]]></message>
+        <rtemessage><![CDATA[]]></rtemessage>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="749.5" centerY="-12.5" entityType="Notification">
+        <SequenceFlow sourcePort="Left" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="b3a42376-7785-44d7-89c6-0c6dee042920" targetPort="Left" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="50aceb8b-f0a3-47af-a235-aac4251050bb" id="f260c919-664f-49b1-989c-8912af290fcb" name="step22" type="DeleteLink">
+      <title>Deleteing  Link between Distribution and Distribution Details</title>
+      <description>Deleteing  Link between Distribution and Distribution Details</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <objectName>DistributionDetailsDistribution</objectName>
+        <objectNameFriendly>
+        </objectNameFriendly>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="e71edc2d-9fb6-4bca-903c-2d2eb15ab12b" dependencyName="FromStep" dependencyType="FromStep" stepPtr="50aceb8b-f0a3-47af-a235-aac4251050bb">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-679" sourceY="1070" targetX="-680" targetY="974" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-679" centerY="1102.637" entityType="ExpireLink">
+        <SequenceFlow sourcePort="Left" targetRef="50aceb8b-f0a3-47af-a235-aac4251050bb" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="affbf605-0e57-48c8-bd9e-0e9955d26e04" id="eebf8dc5-2bb8-40a9-adc7-83a18f5abe7b" name="step23" type="DeleteLink">
+      <title>Deleteing  Link between Manual and Distribution</title>
+      <description>Deleteing  Link between Manual and Distribution</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <objectName>DistributionManualEntryDistributionDetails</objectName>
+        <objectNameFriendly>
+        </objectNameFriendly>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="49dcd7f5-12f9-4cf6-8058-c8f0de9b633a" dependencyName="FromStep" dependencyType="FromStep" stepPtr="affbf605-0e57-48c8-bd9e-0e9955d26e04">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-659" sourceY="1520" targetX="-616" targetY="1394" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-659" centerY="1552.637" entityType="ExpireLink">
+        <SequenceFlow sourcePort="Left" targetRef="affbf605-0e57-48c8-bd9e-0e9955d26e04" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="62a8a6ad-ab59-4a0d-83e6-929d84d968dc" id="241e4d53-2d42-4a82-bd37-6c06b4c87887" name="step167" type="IterateChild">
+      <title> Link Between Distribution Details and Distribution Manual Entry</title>
+      <description> Link Between Distribution Details and Distribution Manual Entry</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[RTE.DDLinkToDME=RTE.DDLinkToDME+1;]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionManualEntryDistributionDetails</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="4802fa7b-e55e-40a1-bee4-d82479a067f4" dependencyName="Select" dependencyType="Select" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-460" sourceY="1000" targetX="860" targetY="-242" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-460" centerY="1026" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="62a8a6ad-ab59-4a0d-83e6-929d84d968dc" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="080f803a-9cd8-4cd4-ac10-3fc221071d4e" id="2be14cc1-b3bd-4cad-a1ad-8cb09da48f0b" name="step161" type="IterateChild">
+      <title>Chechikng Link of DistributionDetail and Manual Entry</title>
+      <description>Chechikng Link of DistributionDetail and Manual Entry</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[RTE.DMELinkDD=RTE.DMELinkDD+1;]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionManualEntryDistributionDetails</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="2201059f-27f6-4184-bb3f-3d028b886bae" dependencyName="Select" dependencyType="Select" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-464" sourceY="196" targetX="860" targetY="-242" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-534" centerY="196" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="080f803a-9cd8-4cd4-ac10-3fc221071d4e" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="776efca0-5b5b-43a7-baa6-95dd66132591" id="f3bd894d-4edd-4c0b-baaf-0bf911fb53df" name="step40" type="DeleteObject">
+      <title>Deleteing Distribution Details Object</title>
+      <description>Deleteing Distribution Details Object</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <objectName>DistributionDetails</objectName>
+        <objectNameFriendly>
+        </objectNameFriendly>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="9ead3eba-7fa8-4aa3-9bbc-ce7456def1f6" dependencyName="FromStep" dependencyType="FromStep" stepPtr="776efca0-5b5b-43a7-baa6-95dd66132591">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-345.6407" sourceY="1590" targetX="-430" targetY="1514" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-345.6406" centerY="1616" entityType="ExpireObject">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="776efca0-5b5b-43a7-baa6-95dd66132591" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="3080d7ef-eb9b-4389-bee7-edc463f179c2" id="35be463c-098c-4fc7-8cc8-0c6f3bd7b3d5" name="step116" type="CallEngine">
+      <title>Call Distribution Detail Engine</title>
+      <description>
+      </description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <engineId>038</engineId>
+        <id>
+        </id>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="173cb8df-2643-4947-8776-18250e80139a" dependencyName="FromStep" dependencyType="FromStep" stepPtr="8465e90e-70b0-493f-aa0f-e56271d8828f">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="2" sourceY="1310" targetX="-345" targetY="15.27344" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="2" centerY="1336" entityType="CallEngine">
+        <SequenceFlow sourcePort="Right" targetRef="3080d7ef-eb9b-4389-bee7-edc463f179c2" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="eb6bbb1e-f469-408b-a9c4-d5e6165803f2" id="40fd8b7c-ef75-48b1-992b-4d88508e551f" name="step289" type="Notification">
+      <title>Notification</title>
+      <description>Notification</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <type>Warning</type>
+        <message><![CDATA[The Amount of the Distribution Manual Entry has been updated to match the sum of the Distribution Details]]></message>
+        <rtemessage><![CDATA[]]></rtemessage>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>True</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="887.5" centerY="547.5" entityType="Notification">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="eb6bbb1e-f469-408b-a9c4-d5e6165803f2" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="4b3e953c-e815-4618-a191-06654c829609" id="b4c0cdd2-0895-4d25-8b8e-017fd2232a3a" name="step280" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[ChildObj.DistributionID = "";]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionDetailsSubsidiaryLedger</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="a2c8cd62-dbd0-4581-844e-bc8fb39cc006" dependencyName="Select" dependencyType="Select" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1560" sourceY="1200" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1560" centerY="1226" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="4b3e953c-e815-4618-a191-06654c829609" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="ed652162-b2d5-4a75-9be0-521fd8efbae7" id="7cc85fe4-2ab4-4333-ad28-a97a901fc93c" name="step278" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[RTE.DistLinkDME = RTE.DistLinkDME + 1;]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionDistributionManualEntry</relationName>
+      </derived>
+      <preStep><![CDATA[RTE.DistLinkDME = 0;]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="ae3afcfe-cd8f-4369-a5f3-60f7d967b28c" dependencyName="Select" dependencyType="Select" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1814" sourceY="1160" targetX="878" targetY="-224" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1814" centerY="1186" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="ed652162-b2d5-4a75-9be0-521fd8efbae7" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="a3d5b885-7e70-4ddd-beca-22e96c45a2ba" id="a3b74329-5321-4ffb-8e31-2831a46970d9" name="step99" type="TreeGridAddEdit">
+      <title>Distribution Details</title>
+      <description>Distribution Details</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <dataPath>
+        </dataPath>
+        <filterBlock><![CDATA[]]></filterBlock>
+        <filterItems />
+        <showRoot>True</showRoot>
+        <linkPropertiesItems>
+          <linkPropertiesItem linkPropertiesItemId="34b991be-b4a1-4dc8-8990-dd2a1bb25267">
+            <dataPath>DistributionManualEntry</dataPath>
+            <objectName>DistributionManualEntry</objectName>
+            <dataView>
+            </dataView>
+            <filterBlock><![CDATA[]]></filterBlock>
+            <allowDelete>False</allowDelete>
+            <allowEdit>False</allowEdit>
+            <allowAdd>True</allowAdd>
+            <showObjectName>True</showObjectName>
+            <allowAttachment>False</allowAttachment>
+            <allowComment>False</allowComment>
+            <SortOrder>none</SortOrder>
+            <SortColumn>
+            </SortColumn>
+          </linkPropertiesItem>
+          <linkPropertiesItem linkPropertiesItemId="b6e31a0b-a2b5-4f43-baf1-035465d6771d">
+            <dataPath>DistributionManualEntry.DistributionManualEntryDistributionDetails.DistributionDetails</dataPath>
+            <objectName>DistributionDetails</objectName>
+            <dataView>9c564c85-254c-4123-bb4d-01884c8d4538</dataView>
+            <filterBlock><![CDATA[]]></filterBlock>
+            <allowDelete>True</allowDelete>
+            <allowEdit>True</allowEdit>
+            <allowAdd>True</allowAdd>
+            <showObjectName>True</showObjectName>
+            <allowAttachment>False</allowAttachment>
+            <allowComment>False</allowComment>
+            <SortOrder>none</SortOrder>
+            <SortColumn>
+            </SortColumn>
+          </linkPropertiesItem>
+        </linkPropertiesItems>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>True</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="181a730a-5939-40cb-8e76-43540cd11265" dependencyName="FromStep" dependencyType="FromStep" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="660" sourceY="256" targetX="860" targetY="-242" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="590" centerY="256" entityType="TreeGridAddEdit">
+        <SequenceFlow sourcePort="Left" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="a3d5b885-7e70-4ddd-beca-22e96c45a2ba" targetPort="Left" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="f177e5e5-7f54-4772-820f-de2959738c74" id="8465e90e-70b0-493f-aa0f-e56271d8828f" name="step88" type="EditObject">
+      <title>Edit Manual Entry for Distribution</title>
+      <description>Edit Distribution Manual Entry for Distribution</description>
+      <dataView>ac8a12f3-5daa-4866-b5a5-8f3b2ec00cf7</dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <objectName>DistributionManualEntry</objectName>
+        <objectNameFriendly>
+        </objectNameFriendly>
+        <rteVariable />
+      </derived>
+      <preStep><![CDATA[CurObj.LastUpdateUser=CurUser();
+CurObj.LastUpdateDate=DateTimeNow();
+
+if(IsEmpty(CurObj.Amount))
+{
+	RTE.OldAmount=0.00;
+}
+else
+{
+	RTE.OldAmount=CurObj.Amount;
+}
+RTE.ValuesChanged = "N";
+RTE.OldPropertyTypes=CurObj.PropertyTypes;
+RTE.OldTaxBaseType=CurObj.TaxBaseType;
+RTE.OldTaxType=CurObj.TaxType;
+RTE.OldUTA=CurObj.UTA;
+RTE.OldYear=CurObj.Year;]]></preStep>
+      <postStep><![CDATA[if(IsNotEmpty(CurObj.UTA))
+{
+	if(IsEmpty(CurObj.Year))
+	notifyuser error "Year is Required";
+	if(IsEmpty(CurObj.PropertyTypes))
+	notifyuser error "Property Type is Required";
+	if(IsEmpty(CurObj.TaxType))
+	notifyuser error "tax type is Required";
+	if(IsEmpty(CurObj.Amount))
+	notifyuser error "Amount is Required";
+}
+
+if(IsEmpty(CurObj.Description))
+notifyuser error "Description is Required ";
+
+if(IsEmpty(CurObj.Amount))
+{
+	RTE.NewAmount=0.00;
+}
+else
+{
+	RTE.NewAmount=CurObj.Amount;
+}
+
+RTE.NewPropertyType=CurObj.PropertyTypes;
+RTE.NewTaxBaseType=CurObj.TaxBaseType;
+RTE.NewTaxType=CurObj.TaxType;
+RTE.NewUTA=CurObj.UTA;
+RTE.NewYear=CurObj.Year;
+
+
+if((RTE.OldAmount <> RTE.NewAmount))
+{
+	!notifyuser info "Amount is changed";
+	RTE.ValuesChanged = "Y";
+}
+if((RTE.OldPropertyTypes <> RTE.NewPropertyType))
+{
+	!		notifyuser info "PropertyType is changed";
+	RTE.ValuesChanged = "Y";
+}
+if((RTE.OldTaxBaseType <> RTE.NewTaxBaseType))
+{
+	!		notifyuser info "TaxBaseType is changed";
+!	RTE.ValuesChanged = "Y";
+}
+if((RTE.OldTaxType <> RTE.NewTaxType))
+{
+	!		notifyuser info "TaxType is changed";
+	RTE.ValuesChanged = "Y";
+}
+if((RTE.OldUTA <> RTE.NewUTA))
+{
+	!		notifyuser info "UTA is changed";
+	RTE.ValuesChanged = "Y";
+}
+if((RTE.OldYear <> RTE.NewYear))
+{
+	!		notifyuser info "Year is changed";
+	RTE.ValuesChanged = "Y";
+}
+RTE.UTAValue=CurObj.UTA;
+
+
+if(IsEmpty(CurObj.Amount))
+{
+	RTE.DMEAmount =0.00;
+}
+else
+{
+	RTE.DMEAmount =CurObj.Amount;
+}
+
+]]></postStep>
+      <inputRequired>True</inputRequired>
+      <attachmentSetting>Optional</attachmentSetting>
+      <commentSetting>Optional</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="9d942cbf-80d4-4bac-a1ea-e2fdf8471fde" dependencyName="FromStep" dependencyType="FromStep" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-244" sourceY="-17.36328" targetX="860" targetY="-242" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-345" centerY="-17.36328" entityType="EditObject">
+        <SequenceFlow sourcePort="Right" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="f177e5e5-7f54-4772-820f-de2959738c74" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+      <RTEPosition>Top</RTEPosition>
+    </step>
+    <step nextStep="6e64e399-b80c-4e07-b6e2-305753f65f38" id="69d770a6-411a-4218-b2b0-61578d2fa171" name="step103" type="IterateChild">
+      <title>Checking Link Between Distribution Details and Subsidiary Ledger</title>
+      <description>Checking Link Between Distribution Details and Subsidiary Ledger</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[RTE.DDLinkToSubLedger=RTE.DDLinkToSubLedger+1;]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionDetailsSubsidiaryLedger</relationName>
+      </derived>
+      <preStep><![CDATA[RTE.DDLinkToSubLedger=0;]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="5645e763-4844-4e41-9b46-3f3da55a8e87" dependencyName="Select" dependencyType="Select" stepPtr="fbda2884-2df7-4597-8695-91428b08776d">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-932" sourceY="580" targetX="-934" targetY="504" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-932" centerY="606" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="6e64e399-b80c-4e07-b6e2-305753f65f38" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="6e64e399-b80c-4e07-b6e2-305753f65f38" name="step104" type="DecisionPoint">
+      <title>Link Between Distribution Details And Subsidiary Ledger</title>
+      <description>Link Between Distribution Details And Subsidiary Ledger</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="9cab8e3b-de26-44e0-847c-7514fa5b2b6e" id="65ef7358-7781-4458-babf-7a64625b1f6c" text="Dist Detail Link to Subsidiary Ledger" defaultSelection="True" stepNumber="9cab8e3b-de26-44e0-847c-7514fa5b2b6e" index="0" />
+          <decisionItem nextStep="fbda2884-2df7-4597-8695-91428b08776d" id="8e82fa0b-0919-40d1-9be4-f5c4ae3840b1" text="No lInk" defaultSelection="False" stepNumber="fbda2884-2df7-4597-8695-91428b08776d" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.DDLinkToSubLedger>0)
+{
+	return "step333";
+}
+else
+{
+	return "step157";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="-933" centerY="686.0001" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="9cab8e3b-de26-44e0-847c-7514fa5b2b6e" targetPort="Top" decision="Unknown" text="Dist Detail Link to Subsidiary Ledger" tag="" isDefault="True" decisionRef="65ef7358-7781-4458-babf-7a64625b1f6c" />
+        <SequenceFlow sourcePort="Left" targetRef="fbda2884-2df7-4597-8695-91428b08776d" targetPort="Top" decision="Unknown" text="No lInk" tag="" isDefault="False" decisionRef="8e82fa0b-0919-40d1-9be4-f5c4ae3840b1" />
+      </diagramEntity>
+    </step>
+    <step nextStep="ec672032-1529-4682-a357-4e0f9ffbe10d" id="a89fe87f-f767-4471-b149-21d332b3cfd7" name="step313" type="SelectObjects">
+      <title>Select Objects</title>
+      <description>Select the Objects.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <dataPath>DistributionManualEntry.DistributionManualEntryDistributionDetails.DistributionDetails</dataPath>
+        <filterBlock><![CDATA[if(DistributionDetails.Amount > 0.0)
+{
+return true;
+}
+else
+{
+return false;
+}]]></filterBlock>
+        <filterItems />
+        <SortOrder>none</SortOrder>
+        <SortColumn>
+        </SortColumn>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="69" centerY="527.7278" entityType="SelectObjects">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="ec672032-1529-4682-a357-4e0f9ffbe10d" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="26b8449d-4fcc-47e3-ad17-7e96b57c7a2c" id="7efdb60e-3b75-4251-8021-3264273ad4aa" name="step264" type="SelectLinks">
+      <title>Select DistributiondetailsSubledgerRecords links</title>
+      <description>Select the links.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <dataPath>DistributionManualEntry.DistributionManualEntryDistributionDetails.DistributionDetails.DistributionDetailsSubsidiaryLedger</dataPath>
+        <filterBlock><![CDATA[]]></filterBlock>
+        <filterItems />
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="a45954e8-eef6-4482-be36-a657ebaecd60" dependencyName="FromStep" dependencyType="FromStep" stepPtr="fbda2884-2df7-4597-8695-91428b08776d">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-929" sourceY="1160.002" targetX="-934" targetY="504" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-929" centerY="1215.273" entityType="SelectLinks">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="26b8449d-4fcc-47e3-ad17-7e96b57c7a2c" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="aa3f55b6-da3e-4ce3-a129-6a24c3a8fff2" name="step267" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="f08055ba-acca-41fe-9a0e-0bcfca1d70f9" id="098c6b95-a012-4481-b7c5-8457185fc854" text="Condition" defaultSelection="False" stepNumber="f08055ba-acca-41fe-9a0e-0bcfca1d70f9" index="0" />
+          <decisionItem nextStep="241e4d53-2d42-4a82-bd37-6c06b4c87887" id="1da8e8c6-e82a-480c-bea8-7fbd25d5e83b" text="Condition" defaultSelection="True" stepNumber="241e4d53-2d42-4a82-bd37-6c06b4c87887" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.DistrdtlsDistrLink > 0)
+{
+return "step268";
+}
+else
+{
+return "step167";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="-580" centerY="646" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Left" targetRef="f08055ba-acca-41fe-9a0e-0bcfca1d70f9" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="False" decisionRef="098c6b95-a012-4481-b7c5-8457185fc854" />
+        <SequenceFlow sourcePort="Right" targetRef="241e4d53-2d42-4a82-bd37-6c06b4c87887" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="True" decisionRef="1da8e8c6-e82a-480c-bea8-7fbd25d5e83b" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="26b8449d-4fcc-47e3-ad17-7e96b57c7a2c" name="step223" type="ArrayLoop">
+      <title>Array Loop</title>
+      <description>Array loop controller for process</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <exitLoopStep>fbda2884-2df7-4597-8695-91428b08776d</exitLoopStep>
+        <startLoopStep>b26ccada-2e11-4cba-ae4f-7069716d7229</startLoopStep>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="2560493d-458a-4b29-9a9a-79f13a07c8d9" dependencyName="Scope" dependencyType="Scope" stepPtr="7efdb60e-3b75-4251-8021-3264273ad4aa">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-930" sourceY="1320" targetX="-929" targetY="1270.547" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-930" centerY="1367" entityType="ArrayLoop">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Left" targetRef="fbda2884-2df7-4597-8695-91428b08776d" targetPort="Top" decision="Unknown" text="Exit" tag="" isDefault="False" decisionRef="4155d96c-e9ea-482e-937f-965f940e5b1c" />
+        <SequenceFlow sourcePort="Bottom" targetRef="b26ccada-2e11-4cba-ae4f-7069716d7229" targetPort="Top" decision="Unknown" text="Loop Start" tag="" isDefault="False" decisionRef="2eee5a11-b435-4781-a74b-20a13193e7a3" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="080f803a-9cd8-4cd4-ac10-3fc221071d4e" name="step162" type="DecisionPoint">
+      <title>Link Between Distribution Details and Manual Entry123</title>
+      <description>Link Between Distribution Details and Manual Entry123</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="43b7160f-81cf-4cb2-b591-6e9807ee04a1" id="3a20e2dd-5d14-47b7-9453-e5f1aca616d5" text="Link Between Distribution Details and Manual Entry" defaultSelection="True" stepNumber="43b7160f-81cf-4cb2-b591-6e9807ee04a1" index="0" />
+          <decisionItem nextStep="35be463c-098c-4fc7-8cc8-0c6f3bd7b3d5" id="393a8b32-bbe1-44f8-9db7-ab8101b825b2" text="No Link" defaultSelection="False" stepNumber="35be463c-098c-4fc7-8cc8-0c6f3bd7b3d5" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.DMELinkDD>0)
+{
+	return "step213";
+}
+else
+{
+	return "step116";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[!notifyuser info ItoS(RTE.DMELinkDD);]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="-533" centerY="276" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Left" targetRef="43b7160f-81cf-4cb2-b591-6e9807ee04a1" targetPort="Top" decision="Unknown" text="Link Between Distribution Details and Manual Entry" tag="" isDefault="True" decisionRef="3a20e2dd-5d14-47b7-9453-e5f1aca616d5" />
+        <SequenceFlow sourcePort="Right" targetRef="35be463c-098c-4fc7-8cc8-0c6f3bd7b3d5" targetPort="Top" decision="Unknown" text="No Link" tag="" isDefault="False" decisionRef="393a8b32-bbe1-44f8-9db7-ab8101b825b2" />
+      </diagramEntity>
+    </step>
+    <step nextStep="26b8449d-4fcc-47e3-ad17-7e96b57c7a2c" id="b26ccada-2e11-4cba-ae4f-7069716d7229" name="step115" type="DeleteLink">
+      <title>Delete Subsidiary Ledger Link</title>
+      <description>Delete Subsidiary Ledger Link</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <objectName>DistributionDetailsSubsidiaryLedger</objectName>
+        <objectNameFriendly>
+        </objectNameFriendly>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="8c75cbfe-c794-4d9a-8382-5b16211cb960" dependencyName="FromStep" dependencyType="FromStep" stepPtr="26b8449d-4fcc-47e3-ad17-7e96b57c7a2c">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-931" sourceY="1440" targetX="-930" targetY="1364" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-931" centerY="1472.637" entityType="ExpireLink">
+        <SequenceFlow sourcePort="Right" targetRef="26b8449d-4fcc-47e3-ad17-7e96b57c7a2c" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="5f0fafee-b88e-4733-bd05-4a968fb64622" name="step118" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="3a08e9a7-f825-4976-a26d-5f9847f60da2" id="183bf9d9-5da4-49fd-9f0c-edb7b101ea47" text="Added" defaultSelection="True" stepNumber="3a08e9a7-f825-4976-a26d-5f9847f60da2" index="0" />
+          <decisionItem nextStep="e5bb6d08-04e6-4d54-93c4-ee8c57bb66a0" id="d0158694-9a58-4167-ae3c-6736b34eae81" text="Edit" defaultSelection="False" stepNumber="e5bb6d08-04e6-4d54-93c4-ee8c57bb66a0" index="1" />
+          <decisionItem nextStep="e5bb6d08-04e6-4d54-93c4-ee8c57bb66a0" id="8b1390bc-ce46-47fc-b3f9-0f05019b12b5" text="un chnaged" defaultSelection="False" stepNumber="e5bb6d08-04e6-4d54-93c4-ee8c57bb66a0" index="2" />
+          <decisionItem nextStep="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" id="9fb83cdc-192a-4258-84f7-e5b783db69e0" text="deleted" defaultSelection="False" stepNumber="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" index="3" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.RowState == "A")
+{
+	RTE.ValuesChanged = "Y";
+	return "step291";
+}
+elseif(RTE.RowState == "E")
+{
+	RTE.ValuesChanged = "Y";
+	return "step250";
+}
+elseif(RTE.RowState == "D")
+{
+	RTE.ValuesChanged = "Y";
+	return "step124";
+}
+else
+{
+	return "step250";
+}
+
+]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[!notifyuser info RTE.RowState;]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="598" centerY="1146" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="3a08e9a7-f825-4976-a26d-5f9847f60da2" targetPort="Top" decision="Unknown" text="Added" tag="" isDefault="True" decisionRef="183bf9d9-5da4-49fd-9f0c-edb7b101ea47" />
+        <SequenceFlow sourcePort="Right" targetRef="e5bb6d08-04e6-4d54-93c4-ee8c57bb66a0" targetPort="Top" decision="Unknown" text="Edit" tag="" isDefault="False" decisionRef="d0158694-9a58-4167-ae3c-6736b34eae81" />
+        <SequenceFlow sourcePort="Right" targetRef="e5bb6d08-04e6-4d54-93c4-ee8c57bb66a0" targetPort="Top" decision="Unknown" text="un chnaged" tag="" isDefault="False" decisionRef="8b1390bc-ce46-47fc-b3f9-0f05019b12b5" />
+        <SequenceFlow sourcePort="Left" targetRef="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" targetPort="Top" decision="Unknown" text="deleted" tag="" isDefault="False" decisionRef="9fb83cdc-192a-4258-84f7-e5b783db69e0" />
+      </diagramEntity>
+    </step>
+    <step nextStep="2e87531e-1ee5-46ee-9f7f-933cde9bcc62" id="1ca983ab-4eca-4210-8023-27c14b144ea9" name="step260" type="LedgerEngine">
+      <title>Call Ledger Engine 049</title>
+      <description>
+      </description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <ledgerEngine>032</ledgerEngine>
+        <id>049</id>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="7387337b-02df-4b9d-ac43-f39ed3c8cd02" dependencyName="FromStep" dependencyType="FromStep" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1216" sourceY="800" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1216" centerY="826" entityType="LedgerEngine">
+        <SequenceFlow sourcePort="Left" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="2e87531e-1ee5-46ee-9f7f-933cde9bcc62" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="b095f234-9496-44be-bbb8-bd655785a897" name="step288" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="4f87bf41-578f-4d29-b7ac-3c7640e3baf0" id="f33e293c-a146-45df-b62f-67e5c4657b2f" text="Condition" defaultSelection="True" stepNumber="4f87bf41-578f-4d29-b7ac-3c7640e3baf0" index="0" />
+          <decisionItem nextStep="eb6bbb1e-f469-408b-a9c4-d5e6165803f2" id="eeeccc67-b138-46b4-a850-72ec80fe083c" text="Condition" defaultSelection="False" stepNumber="eb6bbb1e-f469-408b-a9c4-d5e6165803f2" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.Overpayment>0)
+{
+	if(RTE.OverPaymentAmount <> RTE.TotalDistDtlsAmount)
+	{
+		return "step290";
+	}
+	else
+	{
+		return "step257";
+	}
+}
+else
+{
+	if(RTE.DMEAmount <> RTE.TotalDistDtlsAmount)
+	{
+		return "step290";
+	}
+	else
+	{
+		return "step257";
+	}
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="592" centerY="476" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="4f87bf41-578f-4d29-b7ac-3c7640e3baf0" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="True" decisionRef="f33e293c-a146-45df-b62f-67e5c4657b2f" />
+        <SequenceFlow sourcePort="Right" targetRef="eb6bbb1e-f469-408b-a9c4-d5e6165803f2" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="False" decisionRef="eeeccc67-b138-46b4-a850-72ec80fe083c" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" name="step124" type="ArrayLoop">
+      <title>Array Loop</title>
+      <description>Array loop controller for process</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <exitLoopStep>b3a42376-7785-44d7-89c6-0c6dee042920</exitLoopStep>
+        <startLoopStep>7ffdb286-6729-4e37-9e50-a0754151f7cf</startLoopStep>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="a434c797-7ce6-4c1a-a9da-4b0c481db896" dependencyName="Scope" dependencyType="Scope" stepPtr="e41d4202-4c57-4316-99d8-ff8794f1b92a">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="598" sourceY="900" targetX="599" targetY="855.4559" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="598" centerY="947" entityType="ArrayLoop">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="b3a42376-7785-44d7-89c6-0c6dee042920" targetPort="Left" decision="Unknown" text="Exit" tag="" isDefault="False" decisionRef="bc93b1ed-cd54-42a0-b61c-71d9c512c10f" />
+        <SequenceFlow sourcePort="Bottom" targetRef="7ffdb286-6729-4e37-9e50-a0754151f7cf" targetPort="Top" decision="Unknown" text="Loop Start" tag="" isDefault="False" decisionRef="fa753c4e-1566-42d2-9a53-fcc2a68f1df6" />
+      </diagramEntity>
+    </step>
+    <step nextStep="5f0fafee-b88e-4733-bd05-4a968fb64622" id="7ffdb286-6729-4e37-9e50-a0754151f7cf" name="step196" type="ExecuteCode">
+      <title>Fetching Row State of Distribution Details</title>
+      <description>Fetching Row State of Distribution Details</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived />
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[RTE.RowState=GetRowStatusByOID("DistributionDetails",DistributionDetails.CurObj.OID);]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="4ff5d4f4-7dde-4164-a04b-8ff5fd9591b8" dependencyName="DistributionDetails" dependencyType="Custom" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="598" sourceY="1030" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="598" centerY="1056" entityType="ExecuteCode">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="5f0fafee-b88e-4733-bd05-4a968fb64622" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="219841d1-0146-4cca-9521-1b052289a9cc" id="4b3e953c-e815-4618-a191-06654c829609" name="step320" type="EditObject">
+      <title>Set ProcessID,Type,SubsidiaryLedger on distribution detail</title>
+      <description>This step allows you to edit an existing object.</description>
+      <dataView>25ba45c0-57b2-4713-97fe-fee33fda15f2</dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <objectName>DistributionDetails</objectName>
+        <objectNameFriendly>
+        </objectNameFriendly>
+        <rteVariable />
+      </derived>
+      <preStep><![CDATA[RTE.PositiveDDLCount = 0;
+RTE.NegativeDDLCount = 0;]]></preStep>
+      <postStep><![CDATA[CurObj.Type = "Collection";
+CurObj.SubsidiaryLedgerOID = "";
+
+if(IsNotEmpty(CurObj.Amount))
+{
+	if(CurObj.Amount < 0.0)
+	{
+		CurObj.Process = "050";
+		RTE.NegativeDDLCount = RTE.NegativeDDLCount +1;
+	}
+	else
+	{
+		CurObj.Process = "049";
+		RTE.PositiveDDLCount = RTE.PositiveDDLCount +1;
+	}
+}]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="dc0b2a4b-3d91-4a32-96f5-f2af895772b6" dependencyName="FromStep" dependencyType="FromStep" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1568.359" sourceY="1320" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1568.359" centerY="1346" entityType="EditObject">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="219841d1-0146-4cca-9521-1b052289a9cc" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+      <RTEPosition>Top</RTEPosition>
+    </step>
+    <step nextStep="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" id="e41d4202-4c57-4316-99d8-ff8794f1b92a" name="step201" type="SelectObjects">
+      <title>Select Distribution Details Objects</title>
+      <description>Select Distribution Details Objects</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <dataPath>DistributionManualEntry.DistributionManualEntryDistributionDetails.DistributionDetails</dataPath>
+        <filterBlock><![CDATA[]]></filterBlock>
+        <filterItems />
+        <SortOrder>none</SortOrder>
+        <SortColumn>
+        </SortColumn>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="599" centerY="807.7278" entityType="SelectObjects">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" id="6f17b781-8f2e-42d6-95cc-eb1f5bd8f93b" name="step277" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[if(RTE.DistirType == "FIN")
+{
+ChildObj.DistributionID = ParentObj.DistributionID;
+}]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionDetailsSubsidiaryLedger</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="9f995847-a7ff-4bc6-ab1c-480d4a9a4018" dependencyName="Select" dependencyType="Select" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1986" sourceY="1750" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1986" centerY="1776" entityType="IterateChild">
+        <SequenceFlow sourcePort="Left" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" id="db61f16e-9c54-4dcb-aa98-c0fe7e251e56" name="step284" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[if(RTE.DistirType == "FIN")
+{
+	ChildObj.DistributionID = ParentObj.DistributionID;
+}
+
+ChildObj.DistributionDetailID = ParentObj.DetailsID;]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionDetailsSubsidiaryLedger</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="dff8a590-a4cd-4c5b-b3cd-71647f38bf9e" dependencyName="Select" dependencyType="Select" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1562" sourceY="1970" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1562" centerY="1996" entityType="IterateChild">
+        <SequenceFlow sourcePort="Left" targetRef="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="7cc85fe4-2ab4-4333-ad28-a97a901fc93c" id="74fe392e-4629-480d-8838-61721eafa5fa" name="step132" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[ParentObj.SubsidiaryLedgerOID = ChildObj.OID;]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionDetailsSubsidiaryLedger</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="f9d76b45-a997-481b-bc43-7184cdb7d5f5" dependencyName="Select" dependencyType="Select" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1816" sourceY="1060" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1816" centerY="1086" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="7cc85fe4-2ab4-4333-ad28-a97a901fc93c" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="fdf14b34-51e5-4bcf-8e0c-39bab9c8ce74" id="82866731-c94a-4a45-97d7-241c9c4000eb" name="step134" type="LinkTo">
+      <title>Link DistributionDetailsTo Distribution</title>
+      <description>Confirm the link between the objects.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <leftObj>DistributionDetails</leftObj>
+        <rightObj>Distribution</rightObj>
+        <replaceLinks>False</replaceLinks>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="0aa34c1b-e0b4-4917-b3a6-8616420f4751" dependencyName="FromStep" dependencyType="FromStep" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1891" sourceY="1550" targetX="598" targetY="944" />
+        </dependency>
+        <dependency dependencyId="225a3903-e9e6-4d2a-98b7-6f7292b78cb1" dependencyName="ToStep" dependencyType="ToStep" stepPtr="2d73941c-b955-427d-97cb-0fd800101452">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1891" sourceY="1550" targetX="1893" targetY="1510.365" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1891" centerY="1582.637" entityType="LinkTo">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="fdf14b34-51e5-4bcf-8e0c-39bab9c8ce74" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="ed652162-b2d5-4a75-9be0-521fd8efbae7" name="step135" type="DecisionPoint">
+      <title>Link Between Distribution Manual Entry and Distribution</title>
+      <description>Link Between Distribution Manual Entry and Distribution</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="2d73941c-b955-427d-97cb-0fd800101452" id="1b571c42-7c0e-41d1-b8fb-4b41b885cb9f" text="Link Between Distribution Manual Entry and Distribution" defaultSelection="True" stepNumber="2d73941c-b955-427d-97cb-0fd800101452" index="0" />
+          <decisionItem nextStep="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" id="be3ad306-584a-47a9-b03f-cb7d2eaba194" text="No Link" defaultSelection="False" stepNumber="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.DistLinkDME>0)
+{
+	return "step138";
+}
+else
+{
+	return "step124";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="1817" centerY="1286" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Left" targetRef="2d73941c-b955-427d-97cb-0fd800101452" targetPort="Top" decision="Unknown" text="Link Between Distribution Manual Entry and Distribution" tag="" isDefault="True" decisionRef="1b571c42-7c0e-41d1-b8fb-4b41b885cb9f" />
+        <SequenceFlow sourcePort="Right" targetRef="56ed5eec-4b94-4e9e-a6c4-81c2b0397531" targetPort="Top" decision="Unknown" text="No Link" tag="" isDefault="False" decisionRef="be3ad306-584a-47a9-b03f-cb7d2eaba194" />
+      </diagramEntity>
+    </step>
+    <step nextStep="f55e33d7-01f7-455c-bcd2-383bdcc1b385" id="f4654e60-28cd-4e1d-a7d7-dce493bdf15a" name="step282" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[ParentObj.SubsidiaryLedgerOID = ChildObj.OID;]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionDetailsSubsidiaryLedger</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="167e7814-0ce9-4d9b-91d3-9095b70ab2d3" dependencyName="Select" dependencyType="Select" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1562" sourceY="1790" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1562" centerY="1816" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="f55e33d7-01f7-455c-bcd2-383bdcc1b385" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="6f17b781-8f2e-42d6-95cc-eb1f5bd8f93b" id="fdf14b34-51e5-4bcf-8e0c-39bab9c8ce74" name="step276" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[RTE.DistirType = ChildObj.DistributionType;
+
+ParentObj.DistributionID = ChildObj.DistributionID;]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionDetailsDistribution</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="4c6174ae-8ba7-4de4-bbfa-e0e0e91ea77f" dependencyName="Select" dependencyType="Select" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1890" sourceY="1660" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1890" centerY="1686" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="6f17b781-8f2e-42d6-95cc-eb1f5bd8f93b" targetPort="Left" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="82866731-c94a-4a45-97d7-241c9c4000eb" id="2d73941c-b955-427d-97cb-0fd800101452" name="step138" type="SelectObject">
+      <title>Select object</title>
+      <description>Select an object.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <dataPath>DistributionManualEntry.DistributionDistributionManualEntry.Distribution</dataPath>
+        <filterBlock><![CDATA[]]></filterBlock>
+        <filterItems />
+        <objectName>Distribution</objectName>
+        <DataView>
+        </DataView>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="1893" centerY="1470.182" entityType="SelectObject">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="82866731-c94a-4a45-97d7-241c9c4000eb" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="fbda2884-2df7-4597-8695-91428b08776d" id="43b7160f-81cf-4cb2-b591-6e9807ee04a1" name="step213" type="SelectObjects">
+      <title>Select Distribution Details</title>
+      <description>Select Distribution Details</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <dataPath>DistributionManualEntry.DistributionManualEntryDistributionDetails.DistributionDetails</dataPath>
+        <filterBlock><![CDATA[]]></filterBlock>
+        <filterItems />
+        <SortOrder>none</SortOrder>
+        <SortColumn>
+        </SortColumn>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="-935" centerY="377.7278" entityType="SelectObjects">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="fbda2884-2df7-4597-8695-91428b08776d" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="fbda2884-2df7-4597-8695-91428b08776d" name="step157" type="ArrayLoop">
+      <title>Array Loop</title>
+      <description>Array loop controller for process</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <exitLoopStep>fadd64f7-d474-48ec-93e3-9032c78bafbf</exitLoopStep>
+        <startLoopStep>69d770a6-411a-4218-b2b0-61578d2fa171</startLoopStep>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="fd2e7128-939a-408b-a2af-63e2c1718545" dependencyName="Scope" dependencyType="Scope" stepPtr="43b7160f-81cf-4cb2-b591-6e9807ee04a1">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-934" sourceY="460" targetX="-935" targetY="425.4557" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-934" centerY="507" entityType="ArrayLoop">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="fadd64f7-d474-48ec-93e3-9032c78bafbf" targetPort="Top" decision="Unknown" text="Exit" tag="" isDefault="False" decisionRef="f031c43f-8218-4998-8f5b-0682141b4c47" />
+        <SequenceFlow sourcePort="Bottom" targetRef="69d770a6-411a-4218-b2b0-61578d2fa171" targetPort="Top" decision="Unknown" text="Loop Start" tag="" isDefault="False" decisionRef="6135614f-7398-49e1-a11f-dae6ea0bc08c" />
+      </diagramEntity>
+    </step>
+    <step nextStep="affbf605-0e57-48c8-bd9e-0e9955d26e04" id="c4b097c4-ab76-465e-87e8-4f32712e3ec1" name="step269" type="SelectLinks">
+      <title>Select links</title>
+      <description>Select the links.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <dataPath>DistributionManualEntry.DistributionManualEntryDistributionDetails</dataPath>
+        <filterBlock><![CDATA[]]></filterBlock>
+        <filterItems />
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="-617" centerY="1260.182" entityType="SelectLinks">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="affbf605-0e57-48c8-bd9e-0e9955d26e04" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="62a8a6ad-ab59-4a0d-83e6-929d84d968dc" name="step168" type="DecisionPoint">
+      <title> Link Between Distribution Details and Distribution Manual Entry</title>
+      <description> Link Between Distribution Details and Distribution Manual Entry</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="c4b097c4-ab76-465e-87e8-4f32712e3ec1" id="90b45c0b-7321-4b6e-b9b2-d23ee39b9a9e" text="Distribution Details and Distribution Manual Entry" defaultSelection="True" stepNumber="c4b097c4-ab76-465e-87e8-4f32712e3ec1" index="0" />
+          <decisionItem nextStep="35be463c-098c-4fc7-8cc8-0c6f3bd7b3d5" id="98771afc-98dc-4573-95c8-62ff5df59eb8" text="No Link" defaultSelection="False" stepNumber="35be463c-098c-4fc7-8cc8-0c6f3bd7b3d5" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.DDLinkToDME >0)
+{
+	return "step269";
+}
+else
+{
+	return "step116";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[!notifyuser info ItoS(RTE.DDLinkToDME);]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="-459" centerY="1126" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Left" targetRef="c4b097c4-ab76-465e-87e8-4f32712e3ec1" targetPort="Top" decision="Unknown" text="Distribution Details and Distribution Manual Entry" tag="" isDefault="True" decisionRef="90b45c0b-7321-4b6e-b9b2-d23ee39b9a9e" />
+        <SequenceFlow sourcePort="Right" targetRef="35be463c-098c-4fc7-8cc8-0c6f3bd7b3d5" targetPort="Top" decision="Unknown" text="No Link" tag="" isDefault="False" decisionRef="98771afc-98dc-4573-95c8-62ff5df59eb8" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="50aceb8b-f0a3-47af-a235-aac4251050bb" name="step169" type="ArrayLoop">
+      <title>Select Link Distribution and Distribution Details</title>
+      <description>Select Link Distribution and Distribution Details</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <exitLoopStep>241e4d53-2d42-4a82-bd37-6c06b4c87887</exitLoopStep>
+        <startLoopStep>f260c919-664f-49b1-989c-8912af290fcb</startLoopStep>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="1c5cfa41-9771-48fe-a0c9-711ab16635e2" dependencyName="Scope" dependencyType="Scope" stepPtr="f08055ba-acca-41fe-9a0e-0bcfca1d70f9">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-680" sourceY="930" targetX="-681" targetY="870.5465" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-680" centerY="977" entityType="ArrayLoop">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="241e4d53-2d42-4a82-bd37-6c06b4c87887" targetPort="Top" decision="Unknown" text="Exit" tag="" isDefault="False" decisionRef="add5aa58-bcc4-4051-bc33-b49f4b6f20f3" />
+        <SequenceFlow sourcePort="Bottom" targetRef="f260c919-664f-49b1-989c-8912af290fcb" targetPort="Top" decision="Unknown" text="Loop Start" tag="" isDefault="False" decisionRef="11a3cdcd-98b1-4dc0-8836-a5dcbfbb7793" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="affbf605-0e57-48c8-bd9e-0e9955d26e04" name="step172" type="ArrayLoop">
+      <title>Array Loop</title>
+      <description>Array loop controller for process</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <exitLoopStep>776efca0-5b5b-43a7-baa6-95dd66132591</exitLoopStep>
+        <startLoopStep>eebf8dc5-2bb8-40a9-adc7-83a18f5abe7b</startLoopStep>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="9a261005-7741-4a3e-adf4-f78b02cfc02b" dependencyName="Scope" dependencyType="Scope" stepPtr="c4b097c4-ab76-465e-87e8-4f32712e3ec1">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-616" sourceY="1350" targetX="-617" targetY="1300.365" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-616" centerY="1397" entityType="ArrayLoop">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="776efca0-5b5b-43a7-baa6-95dd66132591" targetPort="Top" decision="Unknown" text="Exit" tag="" isDefault="False" decisionRef="9553a94f-477d-47f0-a829-e1f96a0b0569" />
+        <SequenceFlow sourcePort="Bottom" targetRef="eebf8dc5-2bb8-40a9-adc7-83a18f5abe7b" targetPort="Top" decision="Unknown" text="Loop Start" tag="" isDefault="False" decisionRef="dbdcbba2-52d8-457a-9d1d-26dbe5245a70" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="776efca0-5b5b-43a7-baa6-95dd66132591" name="step173" type="ArrayLoop">
+      <title>Array Loop</title>
+      <description>Array loop controller for process</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <exitLoopStep>07fc0e30-eefd-4fcc-8ac5-492d265b069f</exitLoopStep>
+        <startLoopStep>f3bd894d-4edd-4c0b-baaf-0bf911fb53df</startLoopStep>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="eabe0c79-f465-4489-91bd-d5c93d2c3993" dependencyName="Scope" dependencyType="Scope" stepPtr="43b7160f-81cf-4cb2-b591-6e9807ee04a1">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-430" sourceY="1470" targetX="-935" targetY="425.4557" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-430" centerY="1517" entityType="ArrayLoop">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="07fc0e30-eefd-4fcc-8ac5-492d265b069f" targetPort="Bottom" decision="Unknown" text="Exit" tag="" isDefault="False" decisionRef="29ddb73d-d521-462f-8abf-3f7bbffcfd14" />
+        <SequenceFlow sourcePort="Bottom" targetRef="f3bd894d-4edd-4c0b-baaf-0bf911fb53df" targetPort="Top" decision="Unknown" text="Loop Start" tag="" isDefault="False" decisionRef="e215a17d-a1ee-4bef-ac76-91f6410d710c" />
+      </diagramEntity>
+    </step>
+    <step nextStep="aa3f55b6-da3e-4ce3-a129-6a24c3a8fff2" id="fadd64f7-d474-48ec-93e3-9032c78bafbf" name="step266" type="IterateGrandChild">
+      <title>Iterate GrandChild</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block, For each of the Child Object it will iterate the grandchildren</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[]]></loopBlock>
+        <summaryBlock><![CDATA[RTE.DistrdtlsDistrLink = RTE.DistrdtlsDistrLink + 1;]]></summaryBlock>
+        <relationName>DistributionDistributionManualEntry</relationName>
+        <childRelationName>DistributionDetailsDistribution</childRelationName>
+      </derived>
+      <preStep><![CDATA[RTE.DistrdtlsDistrLink = 0;]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="8f83c68c-6b39-4b84-a70e-6b7bda939c7e" dependencyName="Select" dependencyType="Select" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-510" sourceY="556" targetX="860" targetY="-242" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-580" centerY="556" entityType="IterateGrandChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="aa3f55b6-da3e-4ce3-a129-6a24c3a8fff2" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="db61f16e-9c54-4dcb-aa98-c0fe7e251e56" id="f55e33d7-01f7-455c-bcd2-383bdcc1b385" name="step283" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[RTE.DistirType = ChildObj.DistributionType;
+
+!ParentObj.DistributionID = ChildObj.DistributionID;]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionDetailsDistribution</relationName>
+      </derived>
+      <preStep><![CDATA[RTE.DistLinkDME = 0;]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="752a1aa7-7d32-40d4-9875-a23aa293605a" dependencyName="Select" dependencyType="Select" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1562" sourceY="1880" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1562" centerY="1906" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="db61f16e-9c54-4dcb-aa98-c0fe7e251e56" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="b3a42376-7785-44d7-89c6-0c6dee042920" name="step209" type="EndPoint">
+      <title>Process Summary</title>
+      <description>End point for a process</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived />
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>True</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="2280" centerY="36" entityType="EndPoint">
+        <SequenceFlow sourcePort="Left" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="d3133fe4-0292-4908-a518-83878be3a27d" id="a7e3a8f5-3018-400d-99dd-8254da82f433" name="step216" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[RTE.Overpayment=RTE.Overpayment+1;]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>OverpaymentDistributionManualEntry</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="fa208342-a546-4017-9d10-1e3f997cb813" dependencyName="Select" dependencyType="Select" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-74" sourceY="-138" targetX="860" targetY="-242" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-74" centerY="-164" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="d3133fe4-0292-4908-a518-83878be3a27d" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="d3133fe4-0292-4908-a518-83878be3a27d" name="step217" type="DecisionPoint">
+      <title>Manual Entry Link to OverPayment</title>
+      <description>Manual Entry Link to OverPayment</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="d2399ef5-2b40-4ab4-83fe-2cf32d1a5641" id="4074cf7c-d30a-4e1d-afb7-7fe272882ee6" text="Manual Entry Link to OverPayment" defaultSelection="True" stepNumber="d2399ef5-2b40-4ab4-83fe-2cf32d1a5641" index="0" />
+          <decisionItem nextStep="8465e90e-70b0-493f-aa0f-e56271d8828f" id="189f0722-bd9e-4f1d-9764-e511b672118e" text="Condition" defaultSelection="False" stepNumber="8465e90e-70b0-493f-aa0f-e56271d8828f" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.Overpayment>0)
+{
+	return "step218";
+}
+else
+{
+	return "step88";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="-71" centerY="-74" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="d2399ef5-2b40-4ab4-83fe-2cf32d1a5641" targetPort="Top" decision="Unknown" text="Manual Entry Link to OverPayment" tag="" isDefault="True" decisionRef="4074cf7c-d30a-4e1d-afb7-7fe272882ee6" />
+        <SequenceFlow sourcePort="Left" targetRef="8465e90e-70b0-493f-aa0f-e56271d8828f" targetPort="Right" decision="Unknown" text="Condition" tag="" isDefault="False" decisionRef="189f0722-bd9e-4f1d-9764-e511b672118e" />
+      </diagramEntity>
+    </step>
+    <step nextStep="03a7fe78-3c92-4562-8b42-448cb67bf995" id="d2399ef5-2b40-4ab4-83fe-2cf32d1a5641" name="step218" type="EditObject">
+      <title>Edit Manual Entry for Distribution</title>
+      <description>Edit Manual Entry for Distribution.</description>
+      <dataView>40be4011-8a96-4977-960f-34d0468021bd</dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <objectName>DistributionManualEntry</objectName>
+        <objectNameFriendly>
+        </objectNameFriendly>
+        <rteVariable />
+      </derived>
+      <preStep><![CDATA[CurObj.LastUpdateUser=CurUser();
+CurObj.LastUpdateDate=DateTimeNow();
+RTE.ValuesChanged ="N";]]></preStep>
+      <postStep><![CDATA[if(IsEmpty(CurObj.Amount))
+{
+RTE.OverPaymentAmount =0.00;
+}
+else
+{
+RTE.OverPaymentAmount =CurObj.Amount;
+}
+
+]]></postStep>
+      <inputRequired>True</inputRequired>
+      <attachmentSetting>Optional</attachmentSetting>
+      <commentSetting>Optional</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="f079ba55-c60e-44eb-b549-1194b4df9d80" dependencyName="FromStep" dependencyType="FromStep" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="79" sourceY="105.2734" targetX="860" targetY="-242" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="79" centerY="72.63672" entityType="EditObject">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="03a7fe78-3c92-4562-8b42-448cb67bf995" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+      <RTEPosition>Top</RTEPosition>
+    </step>
+    <step nextStep="" id="56ce2f32-4f90-4989-b423-e09da33ece44" name="step321" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="acdec2d0-5d67-4b28-a389-8078f710e06d" id="3eaf266e-f4ce-4f8c-940a-2c1cf5405e7e" text="Condition" defaultSelection="True" stepNumber="acdec2d0-5d67-4b28-a389-8078f710e06d" index="0" />
+          <decisionItem nextStep="fcd906a1-ad0e-4d94-9938-2c39260bdc8e" id="7c46d82c-f0a6-41a7-b064-045e6e64154c" text="Condition" defaultSelection="False" stepNumber="fcd906a1-ad0e-4d94-9938-2c39260bdc8e" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.PositiveDDLCount > 0)
+{
+	return "step322";
+}
+else 
+{
+	return "step323";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="1570" centerY="1436" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="acdec2d0-5d67-4b28-a389-8078f710e06d" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="True" decisionRef="3eaf266e-f4ce-4f8c-940a-2c1cf5405e7e" />
+        <SequenceFlow sourcePort="Left" targetRef="fcd906a1-ad0e-4d94-9938-2c39260bdc8e" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="False" decisionRef="7c46d82c-f0a6-41a7-b064-045e6e64154c" />
+      </diagramEntity>
+    </step>
+    <step nextStep="b4c0cdd2-0895-4d25-8b8e-017fd2232a3a" id="e5bb6d08-04e6-4d54-93c4-ee8c57bb66a0" name="step250" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[ParentObj.SubsidiaryLedgerOID="";
+RTE.NewDetailID = ParentObj.DetailsID;]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionDetailsSubsidiaryLedger</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="704ef8f7-f393-4fb2-9a5c-e73a4dad7f2e" dependencyName="Select" dependencyType="Select" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1560" sourceY="1080" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1560" centerY="1106" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="b4c0cdd2-0895-4d25-8b8e-017fd2232a3a" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="f177e5e5-7f54-4772-820f-de2959738c74" name="step254" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="2be14cc1-b3bd-4cad-a1ad-8cb09da48f0b" id="8ccda073-06a9-4d5e-9ee8-17cf94456d14" text="New Value" defaultSelection="False" stepNumber="2be14cc1-b3bd-4cad-a1ad-8cb09da48f0b" index="0" />
+          <decisionItem nextStep="3080d7ef-eb9b-4389-bee7-edc463f179c2" id="7b8a09d9-4c2d-40d0-81f5-643ff7457793" text="Old Value" defaultSelection="True" stepNumber="3080d7ef-eb9b-4389-bee7-edc463f179c2" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.ValuesChanged == "Y")
+{
+	return "step161";
+}
+else
+{
+	return "step330";
+}
+]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[!notifyuser info DtoS(RTE.OldAmount);
+!notifyuser info RTE.OldPropertyTypes;
+!notifyuser info RTE.OldTaxBaseType;
+!notifyuser info RTE.OldTaxType;
+!notifyuser info RTE.OldUTA;
+!notifyuser info RTE.OldYear;
+!notifyuser info RTE.ValuesChanged;]]></preStep>
+      <postStep><![CDATA[!notifyuser info DtoS(RTE.NewAmount);
+!notifyuser info RTE.NewPropertyType;
+!notifyuser info RTE.NewTaxBaseType;
+!notifyuser info RTE.NewTaxType;
+!notifyuser info RTE.NewUTA;
+!notifyuser info RTE.NewYear;]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="-332" centerY="106" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Left" targetRef="2be14cc1-b3bd-4cad-a1ad-8cb09da48f0b" targetPort="Top" decision="Unknown" text="New Value" tag="" isDefault="False" decisionRef="8ccda073-06a9-4d5e-9ee8-17cf94456d14" />
+        <SequenceFlow sourcePort="Right" targetRef="3080d7ef-eb9b-4389-bee7-edc463f179c2" targetPort="Top" decision="Unknown" text="Old Value" tag="" isDefault="True" decisionRef="7b8a09d9-4c2d-40d0-81f5-643ff7457793" />
+      </diagramEntity>
+    </step>
+    <step nextStep="b095f234-9496-44be-bbb8-bd655785a897" id="a3d5b885-7e70-4ddd-beca-22e96c45a2ba" name="step256" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[RTE.DDCountDME=RTE.DDCountDME+1;
+
+if(IsNotEmpty(ChildObj.Amount))
+{
+	RTE.TotalDistDtlsAmount = RTE.TotalDistDtlsAmount + ChildObj.Amount;
+}]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionManualEntryDistributionDetails</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="b62f1798-8564-48f8-b4bc-c11034fdfadd" dependencyName="Select" dependencyType="Select" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="678" sourceY="366" targetX="860" targetY="-242" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="608" centerY="366" entityType="IterateChild">
+        <SequenceFlow sourcePort="Left" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="b095f234-9496-44be-bbb8-bd655785a897" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="eb6bbb1e-f469-408b-a9c4-d5e6165803f2" name="step257" type="DecisionPoint">
+      <title>Checking the link between the distribution details and Distribution manual entry.</title>
+      <description>Checking the link between the distribution details and Distribution manual entry.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="e41d4202-4c57-4316-99d8-ff8794f1b92a" id="e8a00ee1-2e60-4bca-8288-99a3b055c7fc" text="Link of DD and DME" defaultSelection="True" stepNumber="e41d4202-4c57-4316-99d8-ff8794f1b92a" index="0" />
+          <decisionItem nextStep="b3a42376-7785-44d7-89c6-0c6dee042920" id="d1607631-b531-4f3c-8f63-fe6430325ddf" text="NO Link" defaultSelection="False" stepNumber="b3a42376-7785-44d7-89c6-0c6dee042920" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.DDCountDME > 0)
+{
+	return "step201";
+}
+else
+{
+	return "step209";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="774.4785" centerY="666" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Left" targetRef="e41d4202-4c57-4316-99d8-ff8794f1b92a" targetPort="Top" decision="Unknown" text="Link of DD and DME" tag="" isDefault="True" decisionRef="e8a00ee1-2e60-4bca-8288-99a3b055c7fc" />
+        <SequenceFlow sourcePort="Right" targetRef="b3a42376-7785-44d7-89c6-0c6dee042920" targetPort="Left" decision="Unknown" text="NO Link" tag="" isDefault="False" decisionRef="d1607631-b531-4f3c-8f63-fe6430325ddf" />
+      </diagramEntity>
+    </step>
+    <step nextStep="35be463c-098c-4fc7-8cc8-0c6f3bd7b3d5" id="07fc0e30-eefd-4fcc-8ac5-492d265b069f" name="step327" type="EditObject">
+      <title>Edit Object</title>
+      <description>This step allows you to edit an existing object.</description>
+      <dataView>cf54c6cb-6a00-4f0d-8da1-13c9cfe8e97d</dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <objectName>DistributionManualEntry</objectName>
+        <objectNameFriendly>
+        </objectNameFriendly>
+        <rteVariable />
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Optional</attachmentSetting>
+      <commentSetting>Optional</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="beb85036-f425-4e83-9ac3-a4a25bd08d5c" dependencyName="FromStep" dependencyType="FromStep" stepPtr="8465e90e-70b0-493f-aa0f-e56271d8828f">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-213" sourceY="1360" targetX="-345" targetY="15.27344" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-213" centerY="1392.637" entityType="EditObject">
+        <SequenceFlow sourcePort="Top" targetRef="35be463c-098c-4fc7-8cc8-0c6f3bd7b3d5" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+      <RTEPosition>Top</RTEPosition>
+    </step>
+    <step nextStep="7efdb60e-3b75-4251-8021-3264273ad4aa" id="b346d719-1d76-4fac-aaa6-5518bb0db76c" name="step265" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[ParentObj.SubsidiaryLedgerOID = "";
+ChildObj.DistributionID = "";]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionDetailsSubsidiaryLedger</relationName>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="528af0af-ec41-425a-84d3-f0bd5761afb1" dependencyName="Select" dependencyType="Select" stepPtr="fbda2884-2df7-4597-8695-91428b08776d">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-926" sourceY="1090" targetX="-934" targetY="504" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-926" centerY="1116" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="7efdb60e-3b75-4251-8021-3264273ad4aa" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="50aceb8b-f0a3-47af-a235-aac4251050bb" id="f08055ba-acca-41fe-9a0e-0bcfca1d70f9" name="step268" type="SelectLinks">
+      <title>Select DistributionDistributionDetails links</title>
+      <description>Select the links.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <dataPath>DistributionManualEntry.DistributionManualEntryDistributionDetails.DistributionDetails.DistributionDetailsDistribution</dataPath>
+        <filterBlock><![CDATA[]]></filterBlock>
+        <filterItems />
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="-681" centerY="815.2734" entityType="SelectLinks">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="50aceb8b-f0a3-47af-a235-aac4251050bb" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="40fd8b7c-ef75-48b1-992b-4d88508e551f" id="4f87bf41-578f-4d29-b7ac-3c7640e3baf0" name="step290" type="ExecuteCode">
+      <title>Execute Code</title>
+      <description>This step will only fire Pre and Post Render, it will always be headless.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived />
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[DME_Custom_Dependency.CurObj.Amount = RTE.TotalDistDtlsAmount;]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="523da8ae-0f38-473c-ba15-da2d1700adff" dependencyName="DME_Custom_Dependency" dependencyType="Custom" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="824" sourceY="462" targetX="878" targetY="-260" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="824" centerY="436" entityType="ExecuteCode">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="40fd8b7c-ef75-48b1-992b-4d88508e551f" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="7bded88a-9aec-4025-ad0a-f3a7195ccf11" id="3a08e9a7-f825-4976-a26d-5f9847f60da2" name="step291" type="EditObject">
+      <title>Set ProcessID,Type,SubsidiaryLedger on distribution detail</title>
+      <description>This step allows you to edit an existing object.</description>
+      <dataView>25ba45c0-57b2-4713-97fe-fee33fda15f2</dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <objectName>DistributionDetails</objectName>
+        <objectNameFriendly>
+        </objectNameFriendly>
+        <rteVariable />
+      </derived>
+      <preStep><![CDATA[RTE.PositiveDDLCount = 0;
+RTE.NegativeDDLCount = 0;]]></preStep>
+      <postStep><![CDATA[CurObj.Type = "Collection";
+CurObj.SubsidiaryLedgerOID = "";
+
+if(IsNotEmpty(CurObj.Amount))
+{
+	if(CurObj.Amount < 0.0)
+	{
+		CurObj.Process = "050";
+		RTE.NegativeDDLCount = RTE.NegativeDDLCount +1;
+	}
+	else
+	{
+		CurObj.Process = "049";
+		RTE.PositiveDDLCount = RTE.PositiveDDLCount +1;
+	}
+}]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="e3671203-c768-4cc0-b331-826304737f80" dependencyName="FromStep" dependencyType="FromStep" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1104.359" sourceY="570" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1104.359" centerY="596" entityType="EditObject">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="7bded88a-9aec-4025-ad0a-f3a7195ccf11" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+      <RTEPosition>Top</RTEPosition>
+    </step>
+    <step nextStep="" id="15d90f9a-9a66-4960-822a-0dc9dfd83a0e" name="step292" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="1ca983ab-4eca-4210-8023-27c14b144ea9" id="3eaf266e-f4ce-4f8c-940a-2c1cf5405e7e" text="Condition" defaultSelection="True" stepNumber="1ca983ab-4eca-4210-8023-27c14b144ea9" index="0" />
+          <decisionItem nextStep="2e87531e-1ee5-46ee-9f7f-933cde9bcc62" id="7c46d82c-f0a6-41a7-b064-045e6e64154c" text="Condition" defaultSelection="False" stepNumber="2e87531e-1ee5-46ee-9f7f-933cde9bcc62" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.PositiveDDLCount <> 0)
+{
+	return "step260";
+}
+else 
+{
+	return "step297";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="974" centerY="876" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="1ca983ab-4eca-4210-8023-27c14b144ea9" targetPort="Left" decision="Unknown" text="Condition" tag="" isDefault="True" decisionRef="3eaf266e-f4ce-4f8c-940a-2c1cf5405e7e" />
+        <SequenceFlow sourcePort="Right" targetRef="2e87531e-1ee5-46ee-9f7f-933cde9bcc62" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="False" decisionRef="7c46d82c-f0a6-41a7-b064-045e6e64154c" />
+      </diagramEntity>
+    </step>
+    <step nextStep="74fe392e-4629-480d-8838-61721eafa5fa" id="86cc4f2f-6cf5-4066-a7fc-4e5f7a3af8c0" name="step293" type="LedgerEngine">
+      <title>Ledger Engine 050</title>
+      <description>
+      </description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <ledgerEngine>032</ledgerEngine>
+        <id>050</id>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="efa920ff-577d-490c-b2c0-f68d628cb0c7" dependencyName="FromStep" dependencyType="FromStep" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1124" sourceY="1070" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1124" centerY="1096" entityType="LedgerEngine">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="74fe392e-4629-480d-8838-61721eafa5fa" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="2e87531e-1ee5-46ee-9f7f-933cde9bcc62" name="step297" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="86cc4f2f-6cf5-4066-a7fc-4e5f7a3af8c0" id="a88cf2a2-2900-4a29-8270-743b69c5c20f" text="Condition" defaultSelection="True" stepNumber="86cc4f2f-6cf5-4066-a7fc-4e5f7a3af8c0" index="0" />
+          <decisionItem nextStep="74fe392e-4629-480d-8838-61721eafa5fa" id="90facd10-4463-4c54-901e-7f033c3b7a2c" text="Condition" defaultSelection="False" stepNumber="74fe392e-4629-480d-8838-61721eafa5fa" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.NegativeDDLCount <> 0)
+{
+	return "step293";
+}
+else
+{
+	return "step132";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="1220" centerY="956" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Left" targetRef="86cc4f2f-6cf5-4066-a7fc-4e5f7a3af8c0" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="True" decisionRef="a88cf2a2-2900-4a29-8270-743b69c5c20f" />
+        <SequenceFlow sourcePort="Right" targetRef="74fe392e-4629-480d-8838-61721eafa5fa" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="False" decisionRef="90facd10-4463-4c54-901e-7f033c3b7a2c" />
+      </diagramEntity>
+    </step>
+    <step nextStep="b346d719-1d76-4fac-aaa6-5518bb0db76c" id="4bac6004-2422-4747-9a49-cbe91aa9ea2f" name="step326" type="LedgerEngine">
+      <title>Ledger Engine</title>
+      <description>
+      </description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <ledgerEngine>032</ledgerEngine>
+        <id>050</id>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="fadaf55a-a2a8-40d3-9c96-178c6e8d8413" dependencyName="FromStep" dependencyType="FromStep" stepPtr="fbda2884-2df7-4597-8695-91428b08776d">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-830" sourceY="1000" targetX="-934" targetY="504" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-830" centerY="1026" entityType="LedgerEngine">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="b346d719-1d76-4fac-aaa6-5518bb0db76c" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="6b216bdd-2b29-4720-9233-0c9eed2b3147" name="step314" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="a89fe87f-f767-4471-b149-21d332b3cfd7" id="3363c5f5-864b-440f-9f47-53bb960951c7" text="Condition" defaultSelection="True" stepNumber="a89fe87f-f767-4471-b149-21d332b3cfd7" index="0" />
+          <decisionItem nextStep="c10ee8dc-eb8d-4d86-ad63-5df44451e0fc" id="51134391-fef7-4f2b-9c37-47ea09ef1430" text="Condition" defaultSelection="False" stepNumber="c10ee8dc-eb8d-4d86-ad63-5df44451e0fc" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.DDCount > 0)
+{
+return "step313";
+}
+else
+{
+return "step316";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[!notifyuser info ItoS(RTE.DDCount);]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="34" centerY="356" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Left" targetRef="a89fe87f-f767-4471-b149-21d332b3cfd7" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="True" decisionRef="3363c5f5-864b-440f-9f47-53bb960951c7" />
+        <SequenceFlow sourcePort="Right" targetRef="c10ee8dc-eb8d-4d86-ad63-5df44451e0fc" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="False" decisionRef="51134391-fef7-4f2b-9c37-47ea09ef1430" />
+      </diagramEntity>
+    </step>
+    <step nextStep="c10ee8dc-eb8d-4d86-ad63-5df44451e0fc" id="ec672032-1529-4682-a357-4e0f9ffbe10d" name="step315" type="LedgerEngine">
+      <title>Ledger Engine</title>
+      <description>
+      </description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <ledgerEngine>032</ledgerEngine>
+        <id>049</id>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="a2f6c807-116e-4fd4-b266-6e8328023f81" dependencyName="FromStep" dependencyType="FromStep" stepPtr="a89fe87f-f767-4471-b149-21d332b3cfd7">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="42" sourceY="620" targetX="69" targetY="575.4557" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="42" centerY="646" entityType="LedgerEngine">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="c10ee8dc-eb8d-4d86-ad63-5df44451e0fc" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="a36d1056-137b-4f7b-a6f0-1f31d8eee24a" id="c10ee8dc-eb8d-4d86-ad63-5df44451e0fc" name="step316" type="IterateChild">
+      <title>Iterate Child</title>
+      <description>Iterates all the related child objects from the dependant object and executes the code inside the Loop Block</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <loopBlock><![CDATA[if(IsEmpty(ChildObj.Amount))
+ChildObj.Amount = 0.0;
+
+if(ChildObj.Amount < 0.0)
+{
+RTE.DDCount = RTE.DDCount+1;
+}
+]]></loopBlock>
+        <summaryBlock><![CDATA[]]></summaryBlock>
+        <relationName>DistributionManualEntryDistributionDetails</relationName>
+      </derived>
+      <preStep><![CDATA[RTE.DDCount = 0;]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="dfff68f4-394b-4bab-bd8b-726b9b6899ab" dependencyName="Select" dependencyType="Select" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="288" sourceY="250" targetX="860" targetY="-242" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="288" centerY="276" entityType="IterateChild">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="a36d1056-137b-4f7b-a6f0-1f31d8eee24a" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="a36d1056-137b-4f7b-a6f0-1f31d8eee24a" name="step317" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="36cb5588-209b-4dea-8222-9ff1c071c3e6" id="be939aac-2788-4d71-a1d1-7cd4fa16e300" text="Condition" defaultSelection="True" stepNumber="36cb5588-209b-4dea-8222-9ff1c071c3e6" index="0" />
+          <decisionItem nextStep="3080d7ef-eb9b-4389-bee7-edc463f179c2" id="825e4351-af86-4258-abd6-6519fcc68ba7" text="Condition" defaultSelection="False" stepNumber="3080d7ef-eb9b-4389-bee7-edc463f179c2" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.DDCount > 0)
+{
+return "step318";
+}
+else
+{
+return "step330";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="288" centerY="366" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Left" targetRef="36cb5588-209b-4dea-8222-9ff1c071c3e6" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="True" decisionRef="be939aac-2788-4d71-a1d1-7cd4fa16e300" />
+        <SequenceFlow sourcePort="Right" targetRef="3080d7ef-eb9b-4389-bee7-edc463f179c2" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="False" decisionRef="825e4351-af86-4258-abd6-6519fcc68ba7" />
+      </diagramEntity>
+    </step>
+    <step nextStep="c9abbee7-b091-41c0-8369-f68ef13eb99a" id="36cb5588-209b-4dea-8222-9ff1c071c3e6" name="step318" type="SelectObjects">
+      <title>Select Objects</title>
+      <description>Select the Objects.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <dataPath>DistributionManualEntry.DistributionManualEntryDistributionDetails.DistributionDetails</dataPath>
+        <filterBlock><![CDATA[if(DistributionDetails.Amount < 0.0)
+{
+return true;
+}
+else
+{
+return false;
+}]]></filterBlock>
+        <filterItems />
+        <SortOrder>none</SortOrder>
+        <SortColumn>
+        </SortColumn>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="275" centerY="527.7278" entityType="SelectObjects">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="c9abbee7-b091-41c0-8369-f68ef13eb99a" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="3080d7ef-eb9b-4389-bee7-edc463f179c2" id="c9abbee7-b091-41c0-8369-f68ef13eb99a" name="step319" type="LedgerEngine">
+      <title>Ledger Engine</title>
+      <description>
+      </description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <ledgerEngine>032</ledgerEngine>
+        <id>050</id>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="1c220cd1-1da1-4f42-a226-80d618d4f837" dependencyName="FromStep" dependencyType="FromStep" stepPtr="36cb5588-209b-4dea-8222-9ff1c071c3e6">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="278" sourceY="640" targetX="275" targetY="575.4557" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="278" centerY="666" entityType="LedgerEngine">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="3080d7ef-eb9b-4389-bee7-edc463f179c2" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="fcd906a1-ad0e-4d94-9938-2c39260bdc8e" id="acdec2d0-5d67-4b28-a389-8078f710e06d" name="step322" type="LedgerEngine">
+      <title>Ledger Engine</title>
+      <description>
+      </description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <ledgerEngine>032</ledgerEngine>
+        <id>049</id>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="6933be20-00b1-4176-89ac-da06aef0cf53" dependencyName="FromStep" dependencyType="FromStep" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1718" sourceY="1530" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1718" centerY="1556" entityType="LedgerEngine">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="fcd906a1-ad0e-4d94-9938-2c39260bdc8e" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="fcd906a1-ad0e-4d94-9938-2c39260bdc8e" name="step323" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="a9a20599-5052-4785-8275-aac78390825c" id="7f7eada0-f21b-4910-ac7f-9afefc2d88e2" text="Condition" defaultSelection="True" stepNumber="a9a20599-5052-4785-8275-aac78390825c" index="0" />
+          <decisionItem nextStep="f4654e60-28cd-4e1d-a7d7-dce493bdf15a" id="e2b3c1b4-adf2-46e9-9700-cf7ba132efec" text="Condition" defaultSelection="False" stepNumber="f4654e60-28cd-4e1d-a7d7-dce493bdf15a" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.NegativeDDLCount> 0)
+{
+	return "step324";
+}
+else 
+{
+	return "step282";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="1562" centerY="1636" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="a9a20599-5052-4785-8275-aac78390825c" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="True" decisionRef="7f7eada0-f21b-4910-ac7f-9afefc2d88e2" />
+        <SequenceFlow sourcePort="Right" targetRef="f4654e60-28cd-4e1d-a7d7-dce493bdf15a" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="False" decisionRef="e2b3c1b4-adf2-46e9-9700-cf7ba132efec" />
+      </diagramEntity>
+    </step>
+    <step nextStep="f4654e60-28cd-4e1d-a7d7-dce493bdf15a" id="a9a20599-5052-4785-8275-aac78390825c" name="step324" type="LedgerEngine">
+      <title>Ledger Engine</title>
+      <description>
+      </description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <ledgerEngine>032</ledgerEngine>
+        <id>050</id>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="010ea20c-9b39-46a0-865a-35b2d8df3296" dependencyName="FromStep" dependencyType="FromStep" stepPtr="56ed5eec-4b94-4e9e-a6c4-81c2b0397531">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="1734" sourceY="1700" targetX="598" targetY="944" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="1734" centerY="1726" entityType="LedgerEngine">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="f4654e60-28cd-4e1d-a7d7-dce493bdf15a" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="a3d5b885-7e70-4ddd-beca-22e96c45a2ba" id="098faf63-b7ad-4b40-bdde-8508c7c76322" name="step329" type="TreeGridAddEdit">
+      <title>Distribution Details</title>
+      <description>Allows user to add, edit and remove rows in a tree grid view.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <dataPath>
+        </dataPath>
+        <filterBlock><![CDATA[]]></filterBlock>
+        <filterItems />
+        <showRoot>True</showRoot>
+        <linkPropertiesItems>
+          <linkPropertiesItem linkPropertiesItemId="2aeaa39d-17c6-4d5a-b5aa-39b50a126ff8">
+            <dataPath>DistributionManualEntry</dataPath>
+            <objectName>DistributionManualEntry</objectName>
+            <dataView>
+            </dataView>
+            <filterBlock><![CDATA[]]></filterBlock>
+            <allowDelete>False</allowDelete>
+            <allowEdit>False</allowEdit>
+            <allowAdd>True</allowAdd>
+            <showObjectName>True</showObjectName>
+            <allowAttachment>False</allowAttachment>
+            <allowComment>False</allowComment>
+            <SortOrder>none</SortOrder>
+            <SortColumn>
+            </SortColumn>
+          </linkPropertiesItem>
+          <linkPropertiesItem linkPropertiesItemId="31e9f2b9-0e7e-4226-9130-52a73fd639e3">
+            <dataPath>DistributionManualEntry.DistributionManualEntryDistributionDetails.DistributionDetails</dataPath>
+            <objectName>DistributionDetails</objectName>
+            <dataView>9c564c85-254c-4123-bb4d-01884c8d4538</dataView>
+            <filterBlock><![CDATA[]]></filterBlock>
+            <allowDelete>False</allowDelete>
+            <allowEdit>False</allowEdit>
+            <allowAdd>False</allowAdd>
+            <showObjectName>True</showObjectName>
+            <allowAttachment>False</allowAttachment>
+            <allowComment>False</allowComment>
+            <SortOrder>none</SortOrder>
+            <SortColumn>
+            </SortColumn>
+          </linkPropertiesItem>
+        </linkPropertiesItems>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>True</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>True</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="a2216881-78ee-49b1-b49b-7ba2b44cda90" dependencyName="FromStep" dependencyType="FromStep" stepPtr="e968186a-15ef-4edf-8b88-11b54efb3a76">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="771.3391" sourceY="238.3787" targetX="878" targetY="-224" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="771.3391" centerY="264.3787" entityType="TreeGridAddEdit">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="a3d5b885-7e70-4ddd-beca-22e96c45a2ba" targetPort="Left" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="3080d7ef-eb9b-4389-bee7-edc463f179c2" name="step330" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="098faf63-b7ad-4b40-bdde-8508c7c76322" id="fd3bc255-2bdd-4406-b597-d2fb2dd9a7fc" text="Condition" defaultSelection="True" stepNumber="098faf63-b7ad-4b40-bdde-8508c7c76322" index="0" />
+          <decisionItem nextStep="a3b74329-5321-4ffb-8e31-2831a46970d9" id="2a81b0b5-8f56-4ac8-8181-e9f8c0f13c3e" text="Condition" defaultSelection="False" stepNumber="a3b74329-5321-4ffb-8e31-2831a46970d9" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.Overpayment>0)
+{
+return "step329";
+}
+else
+{
+return "step99";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="674" centerY="126" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="098faf63-b7ad-4b40-bdde-8508c7c76322" targetPort="Top" decision="Unknown" text="Condition" tag="" isDefault="True" decisionRef="fd3bc255-2bdd-4406-b597-d2fb2dd9a7fc" />
+        <SequenceFlow sourcePort="Right" targetRef="a3b74329-5321-4ffb-8e31-2831a46970d9" targetPort="Left" decision="Unknown" text="Condition" tag="" isDefault="False" decisionRef="2a81b0b5-8f56-4ac8-8181-e9f8c0f13c3e" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="7bded88a-9aec-4025-ad0a-f3a7195ccf11" name="step331" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="e5bb6d08-04e6-4d54-93c4-ee8c57bb66a0" id="49039dc7-12ac-4f1e-9c1b-c4fedd8766c1" text="Old Value" defaultSelection="True" stepNumber="e5bb6d08-04e6-4d54-93c4-ee8c57bb66a0" index="0" />
+          <decisionItem nextStep="15d90f9a-9a66-4960-822a-0dc9dfd83a0e" id="2b4badb8-c272-4ae6-8cb3-ef384e7fe0ee" text="New Value" defaultSelection="False" stepNumber="15d90f9a-9a66-4960-822a-0dc9dfd83a0e" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.ValuesChanged == "Y")
+{
+	return "step250";
+}
+else
+{
+	return "step292";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[!notifyuser info DtoS(RTE.OldAmount);
+!notifyuser info RTE.OldPropertyTypes;
+!notifyuser info RTE.OldTaxBaseType;
+!notifyuser info RTE.OldTaxType;
+!notifyuser info RTE.OldUTA;
+!notifyuser info RTE.OldYear;
+!notifyuser info RTE.ValuesChanged;]]></preStep>
+      <postStep><![CDATA[!notifyuser info DtoS(RTE.NewAmount);
+!notifyuser info RTE.NewPropertyType;
+!notifyuser info RTE.NewTaxBaseType;
+!notifyuser info RTE.NewTaxType;
+!notifyuser info RTE.NewUTA;
+!notifyuser info RTE.NewYear;]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="1156" centerY="696" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="e5bb6d08-04e6-4d54-93c4-ee8c57bb66a0" targetPort="Top" decision="Unknown" text="Old Value" tag="" isDefault="True" decisionRef="49039dc7-12ac-4f1e-9c1b-c4fedd8766c1" />
+        <SequenceFlow sourcePort="Right" targetRef="15d90f9a-9a66-4960-822a-0dc9dfd83a0e" targetPort="Top" decision="Unknown" text="New Value" tag="" isDefault="False" decisionRef="2b4badb8-c272-4ae6-8cb3-ef384e7fe0ee" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="219841d1-0146-4cca-9521-1b052289a9cc" name="step332" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="56ce2f32-4f90-4989-b423-e09da33ece44" id="f2c7ba12-8cd1-41b2-be40-bc55a8b41735" text="New Value" defaultSelection="False" stepNumber="56ce2f32-4f90-4989-b423-e09da33ece44" index="0" />
+          <decisionItem nextStep="f4654e60-28cd-4e1d-a7d7-dce493bdf15a" id="84f29174-48b8-4644-8a2c-4354f2249614" text="Old Value" defaultSelection="True" stepNumber="f4654e60-28cd-4e1d-a7d7-dce493bdf15a" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[if(RTE.ValuesChanged == "Y")
+{
+	return "step321";
+}
+else
+{
+	return "step282";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[!notifyuser info DtoS(RTE.OldAmount);
+!notifyuser info RTE.OldPropertyTypes;
+!notifyuser info RTE.OldTaxBaseType;
+!notifyuser info RTE.OldTaxType;
+!notifyuser info RTE.OldUTA;
+!notifyuser info RTE.OldYear;
+!notifyuser info RTE.ValuesChanged;]]></preStep>
+      <postStep><![CDATA[!notifyuser info DtoS(RTE.NewAmount);
+!notifyuser info RTE.NewPropertyType;
+!notifyuser info RTE.NewTaxBaseType;
+!notifyuser info RTE.NewTaxType;
+!notifyuser info RTE.NewUTA;
+!notifyuser info RTE.NewYear;]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="1276.563" centerY="1504.688" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="56ce2f32-4f90-4989-b423-e09da33ece44" targetPort="Top" decision="Unknown" text="New Value" tag="" isDefault="False" decisionRef="f2c7ba12-8cd1-41b2-be40-bc55a8b41735" />
+        <SequenceFlow sourcePort="Right" targetRef="f4654e60-28cd-4e1d-a7d7-dce493bdf15a" targetPort="Top" decision="Unknown" text="Old Value" tag="" isDefault="True" decisionRef="84f29174-48b8-4644-8a2c-4354f2249614" />
+      </diagramEntity>
+    </step>
+    <step nextStep="" id="9cab8e3b-de26-44e0-847c-7514fa5b2b6e" name="step333" type="DecisionPoint">
+      <title>Select an Option</title>
+      <description>Select one of the options below.</description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <decisionItems>
+          <decisionItem nextStep="4bac6004-2422-4747-9a49-cbe91aa9ea2f" id="fb0bca9c-915e-4380-8f73-d048ceec38db" text="Positive Amount" defaultSelection="False" stepNumber="4bac6004-2422-4747-9a49-cbe91aa9ea2f" index="0" />
+          <decisionItem nextStep="080393bc-2f2f-42e9-abcb-067eac577049" id="d49025c0-cb5d-4cf3-8aac-5ec931ad0e81" text="Negative Amount" defaultSelection="True" stepNumber="080393bc-2f2f-42e9-abcb-067eac577049" index="1" />
+        </decisionItems>
+        <codeBlock><![CDATA[notifyuser info DToS(RTE.Amount);
+if(RTE.Amount > 0.0)
+{
+	return "step326";
+}
+else
+{
+	return "step334";
+}]]></codeBlock>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>False</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems />
+      <diagramEntity centerX="-934" centerY="856" entityType="Condition">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="CondHeader" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Right" targetRef="4bac6004-2422-4747-9a49-cbe91aa9ea2f" targetPort="Top" decision="Unknown" text="Positive Amount" tag="" isDefault="False" decisionRef="fb0bca9c-915e-4380-8f73-d048ceec38db" />
+        <SequenceFlow sourcePort="Left" targetRef="080393bc-2f2f-42e9-abcb-067eac577049" targetPort="Top" decision="Unknown" text="Negative Amount" tag="" isDefault="True" decisionRef="d49025c0-cb5d-4cf3-8aac-5ec931ad0e81" />
+      </diagramEntity>
+    </step>
+    <step nextStep="b346d719-1d76-4fac-aaa6-5518bb0db76c" id="080393bc-2f2f-42e9-abcb-067eac577049" name="step334" type="LedgerEngine">
+      <title>Ledger Engine</title>
+      <description>
+      </description>
+      <dataView>
+      </dataView>
+      <secondarydataView>
+      </secondarydataView>
+      <derived>
+        <ledgerEngine>032</ledgerEngine>
+        <id>049</id>
+      </derived>
+      <preStep><![CDATA[]]></preStep>
+      <postStep><![CDATA[]]></postStep>
+      <inputRequired>True</inputRequired>
+      <attachmentSetting>Disabled</attachmentSetting>
+      <commentSetting>Disabled</commentSetting>
+      <showInSummary>False</showInSummary>
+      <dependencyItems>
+        <dependency dependencyId="0b34e6c8-8f35-4cb9-ae34-3a265261d9a9" dependencyName="FromStep" dependencyType="FromStep" stepPtr="fbda2884-2df7-4597-8695-91428b08776d">
+          <dependencyDesc><![CDATA[]]></dependencyDesc>
+          <diagramEntity sourceX="-978" sourceY="1000" targetX="-934" targetY="504" />
+        </dependency>
+      </dependencyItems>
+      <diagramEntity centerX="-978" centerY="1026" entityType="LedgerEngine">
+        <SequenceFlow sourcePort="Top" targetRef="" targetPort="None" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+        <SequenceFlow sourcePort="Bottom" targetRef="b346d719-1d76-4fac-aaa6-5518bb0db76c" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+      </diagramEntity>
+    </step>
+  </steps>
+  <comments>
+    <comment id="ff8a026c-b87e-44e5-952a-be1f14e99063">
+      <text><![CDATA[Edit Distribution Manual Entry
+Edit Distribution Manual Entry]]></text>
+      <diagramEntity centerX="575.7669" centerY="-152.9089" />
+    </comment>
+  </comments>
+  <rteVariableItems>
+    <rteVariable rteVariableId="e3581332-632e-4466-936f-5d3ac9ab899d" rteVariableName="PropertyType" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="51caca2d-1be2-45b1-a58b-610709e56746" rteVariableName="Overpayment" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="9d079549-e798-409d-a18c-3555d26c98ca" rteVariableName="DistributionDetailsLinkManual" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="4e018d6e-6b31-4daa-8ff2-898f30621273" rteVariableName="DMEYear" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="9f066e46-4973-48d8-bcb0-9c1e85abe856" rteVariableName="DLinkDME" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="04480d4a-37ab-4486-b89b-ec84588d9f01" rteVariableName="LevyBook" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="ba988edc-e8b5-460e-b61e-d761a560cfd7" rteVariableName="PaidUnpaidReport" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="dfb084d6-c344-45db-8fcd-308e17445f07" rteVariableName="DMELinkDistn" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="80e473cc-0a6f-45d5-bbc2-b9e2c2c77b62" rteVariableName="DistributionStatus" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="55b59461-d037-4770-9317-6c7960c68274" rteVariableName="DistLinkDME" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="2c89eeb0-93e1-402e-a28b-332bb18f5476" rteVariableName="DistLinkDistDetails" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="d1a4d615-feb4-4216-87e9-e709e1d404e4" rteVariableName="DDLinkToSubLedger" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="b8f0c9c7-db66-47f6-bd94-ca5e00c7fd92" rteVariableName="Amount" rteVariableType="Decimal">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0.00]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="8f9d1a04-3053-46d1-bc46-9ac690d7e5fb" rteVariableName="RowState" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="997fc19f-6384-4b69-8551-aeec13def82f" rteVariableName="DMELinkDist" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="42800899-eaab-49dc-bb90-7f84d77e2e3c" rteVariableName="DistirType" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="41ae14e2-4a31-4d4a-a5b6-c21b953e80f6" rteVariableName="DMELinkDD" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="594f4c23-53d0-43ba-a705-613a7b0339a8" rteVariableName="DDLinkToDME" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="ff983cd1-dfb6-4f4a-aed5-770984cf7761" rteVariableName="distributionId" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="c3d7743a-acd1-428e-a078-f36d49f4eb8c" rteVariableName="OldAmount" rteVariableType="Decimal">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0.00]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="0ff56a67-b2f4-4c1b-942c-df4348d6b6d1" rteVariableName="OldUTA" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="f1125fad-4be2-4c66-9794-26b829acb8eb" rteVariableName="OldYear" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="33ffdfe6-6a32-4506-8eb9-25e2ecf9efe1" rteVariableName="OldPropertyTypes" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="6be6ee06-926c-4ecd-884c-086465f57e88" rteVariableName="OldTaxType" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="e31c128f-6bcb-4398-adf7-8f494b8e5b60" rteVariableName="OldTaxBaseType" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="99ae23e5-6fd4-4da5-80ca-335abae01971" rteVariableName="NewAmount" rteVariableType="Decimal">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0.00]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="6e16ad4d-7897-4117-84e1-3d1e0510c9e2" rteVariableName="NewTaxType" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="ab267d44-9d65-40e0-a3a5-9363b1284570" rteVariableName="NewPropertyType" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="5f0a0444-5309-41ac-b565-22d9b19c8b52" rteVariableName="NewUTA" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="82d7d5a0-11d4-4800-b77e-2100ce8dd319" rteVariableName="NewYear" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="238fcf10-8c03-41c4-b0af-163dcb7485a2" rteVariableName="NewTaxBaseType" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="ede22408-e001-4de2-be6a-be676c351342" rteVariableName="Count1" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="2c193ab0-c535-4900-9553-810845b39461" rteVariableName="DDCountDME" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="4f9d8c1f-7d09-4227-8bfe-fa57d3b9820f" rteVariableName="ValuesChanged" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="e2fe7483-4088-4304-a0d0-d1ca91f920d4" rteVariableName="UTAValue" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="6fb49cc9-0d72-4dae-9cac-b9b30afe88d7" rteVariableName="DistrdtlsDistrLink" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="85c53e27-87e0-4580-8468-f5cb339acd2c" rteVariableName="DMEAmount" rteVariableType="Decimal">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0.00]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="6b6b0f06-7370-4ba8-9d74-28055da5fadc" rteVariableName="OverPaymentAmount" rteVariableType="Decimal">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0.00]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="1dbbf83a-5ff3-46e4-bafd-7510822e39f2" rteVariableName="TotalDistDtlsAmount" rteVariableType="Decimal">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0.00]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="a1ede480-45f6-426d-ae29-fd510bdd42a9" rteVariableName="PositiveDDLCount" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="a7be343b-e569-48db-b78e-73e0105c83f2" rteVariableName="NegativeDDLCount" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="ca52c38d-11ca-4260-b326-17e44d1a5be2" rteVariableName="OldDetailID" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="730ae406-f9ea-4478-b807-c08f292d1b18" rteVariableName="NewDetailID" rteVariableType="String">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[xxx]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+    <rteVariable rteVariableId="2eb08f37-be2f-4af2-b72b-53341e0a7397" rteVariableName="DDCount" rteVariableType="Int">
+      <rteVariableCaption>
+      </rteVariableCaption>
+      <rteVariableDefaultValue><![CDATA[0]]></rteVariableDefaultValue>
+      <rteVariableDesc><![CDATA[]]></rteVariableDesc>
+      <rteVariableAttriButeType><![CDATA[Unknown]]></rteVariableAttriButeType>
+      <rteVariableIsReadOnly><![CDATA[False]]></rteVariableIsReadOnly>
+      <rteVariableReqCndMsg><![CDATA[]]></rteVariableReqCndMsg>
+      <rteVariableReqCnd><![CDATA[]]></rteVariableReqCnd>
+      <rteVariableLookUpTableName><![CDATA[]]></rteVariableLookUpTableName>
+      <rteVariableLookUpDisplayColumn><![CDATA[]]></rteVariableLookUpDisplayColumn>
+      <rteVariableLookUpValueColumn><![CDATA[]]></rteVariableLookUpValueColumn>
+      <rteVariableLookUpDisplayColumns><![CDATA[Description]]></rteVariableLookUpDisplayColumns>
+      <rteVariableLookUpSortColumn><![CDATA[]]></rteVariableLookUpSortColumn>
+      <rteVariableValue><![CDATA[]]></rteVariableValue>
+    </rteVariable>
+  </rteVariableItems>
+  <diagramEntity centerX="306" centerY="-204" entityType="Process">
+    <SequenceFlow sourcePort="Bottom" targetRef="a77c7639-209d-4f8e-966a-a17e4102fb1f" targetPort="Top" decision="Unknown" text="" tag="" isDefault="False" decisionRef="" />
+  </diagramEntity>
+</process>
