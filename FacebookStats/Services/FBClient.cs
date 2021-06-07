@@ -17,7 +17,7 @@ namespace FacebookStats.Services
         public static string Get(string url, string fields)
         {
 
-            url = @"https://graph.facebook.com/v10.0/" + url + @"?access_token=EAADfq6jGkYoBALHeiCkpbAZCkWZARUYLnB4ZAFExsmB6zeVyeNXgIpZCRKbZBYVQGYgaQZCtLVwyfUXnSRBxLBfmwawhWVjwXBm23X1cB1zZA9v8tZAZC34UBMe6Xf04KAllirdY5E9hsZBNDmkHW0ZBaBim24gb5FkiCnyedC7S4KlCKj5807fVexpCHAolLKKMacZD&debug=all&" + fields + @"&format=json&method=get&pretty=0&suppress_http_code=1&transport=cors";
+            url = @"https://graph.facebook.com/v10.0/" + url + @"?access_token="+FacebookSettings.AccessToken+"&debug=all&" + fields + @"&format=json&method=get&pretty=0&suppress_http_code=1&transport=cors";
 
             var request = WebRequest.Create(url);
             request.Method = "GET";
@@ -37,7 +37,7 @@ namespace FacebookStats.Services
         {
             using (var client = new HttpClient())
             {
-                url = @"https://graph.facebook.com/v10.0/" + url + @"?access_token=EAADfq6jGkYoBALHeiCkpbAZCkWZARUYLnB4ZAFExsmB6zeVyeNXgIpZCRKbZBYVQGYgaQZCtLVwyfUXnSRBxLBfmwawhWVjwXBm23X1cB1zZA9v8tZAZC34UBMe6Xf04KAllirdY5E9hsZBNDmkHW0ZBaBim24gb5FkiCnyedC7S4KlCKj5807fVexpCHAolLKKMacZD&debug=all&" + fields + @"&format=json&method=get&pretty=0&suppress_http_code=1&transport=cors";
+                url = @"https://graph.facebook.com/v10.0/" + url + @"?access_token=" + FacebookSettings.AccessToken + "&debug=all&" + fields + @"&format=json&method=get&pretty=0&suppress_http_code=1&transport=cors";
 
                 var json = JsonConvert.SerializeObject(data);
                 var stringContent = new StringContent(json, UnicodeEncoding.UTF8, "application/json"); // use MediaTypeNames.Application.Json in Core 3.0+ and Standard 2.1+
@@ -53,7 +53,7 @@ namespace FacebookStats.Services
 
         public static HttpWebResponse MultipartFormDataPost(Dictionary<string, object> postParameters)
         {
-           string postUrl = @"https://graph.facebook.com/v10.0/act_997931414279422/adimages?access_token=EAADfq6jGkYoBAHvujz0pbUaZBLgO8LvLYrLmeFqAifV8decc47YzG7n7SJYIpEvnZAMkZBVzqxRZB4T77w2dCPThBBgoqvRH7zVa0XbqwxNy6ZC5K9ZAcHDJFdx7fmrMpIp2npANgJUHZC5nTcFoM59KjbXhjkpUaRgaJO4UlRKhTn5dXxFLlwN5YuBz26i0X0ZD";
+           string postUrl = @"https://graph.facebook.com/v10.0/act_997931414279422/adimages?access_token=" + FacebookSettings.AccessToken + "";
 
             string formDataBoundary = String.Format("----------{0:N}", Guid.NewGuid());
             string contentType = "multipart/form-data; boundary=" + formDataBoundary;

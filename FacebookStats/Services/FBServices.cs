@@ -110,7 +110,7 @@ namespace FacebookStats.Services
             else
             {
                 Preview peview = JsonConvert.DeserializeObject<Preview>(result);
-                return peview.data.FirstOrDefault().body;
+                return peview.data?.FirstOrDefault()?.body;
             }
         }
         public static AdAccountInfo GetAdAccounts()
