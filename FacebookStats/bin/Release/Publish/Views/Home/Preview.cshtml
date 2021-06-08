@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Preview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Preview</h2>
+@if (ViewBag.Preview == null)
+{
+    <h2>Error in Access token.</h2>
+}
+else
+{
+    @Html.Raw(ViewBag.Preview)
+
+}
